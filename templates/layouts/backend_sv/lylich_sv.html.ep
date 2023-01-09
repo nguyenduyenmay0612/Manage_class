@@ -1,0 +1,23 @@
+% layout 'backend_sv/index';
+
+<div class="row content">
+    <div class="col-sm-2 sidenav">  
+      <div>
+          <br> 
+          <b>Lý lịch sinh viên</b> <br> <hr>
+            Tên: Nguyễn An<hr>
+                
+      </div> <br>
+    </div>
+    <div class="col-sm-10 text-left"> 
+      <h3>
+      Thông tin về bạn
+      </h3>
+      <b> Tên sinh viên:  </b> <hr>
+      <b> Ngày sinh: </b><hr>
+      <b> Địa chỉ</b><hr>
+      <b> Email: </b><hr>
+      <b> Phone:</b><hr>
+
+  </div>
+</div>

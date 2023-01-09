@@ -1,0 +1,16 @@
+% layout 'frontend/index1';
+% title 'Welcome';
+<h2>TIN TỨC | SỰ KIỆN | HOẠT ĐỘNG</h2>
+<div class = "title-sukien">
+ <b>"VKU tổ chức Hội nghị nghiên cứu, học tập, quán triệt, tuyên truyền và triển khai Nghị quyết Hội nghị lần thứ sáu của Ban chấp hành Trung ương Đảng khóa XIII"<b>
+</div>
+<hr> 
+<div class = "content-sukien">
+<p>Thực hiện Kế hoạch số 912-KH/ĐU ngày 05/12/2022 của Đảng ủy Đại học Đà Nẵng,
+ sáng ngày 24/12/2022, Đảng ủy Trường Đại học Công nghệ Thông tin và Truyền thông Việt - Hàn tổ chức Hội nghị nghiên cứu,
+ học tập, quán triệt, tuyên truyền và triển khai Nghị quyết Hội nghị lần thứ VI của Ban Chấp hành Trung ương Đảng khóa XIII.</p>
+<img src="assets\image\sk1.jpg" style="width:500px ; height: 350px;"> <br> <br>
+<span>Tham dự hội nghị, có PGS.TS. Huỳnh Công Pháp - Bí thư Đảng ủy, Hiệu trưởng nhà trường; các đồng chí Ban thường vụ, BCH Đảng bộ, các Chi bộ trực thuộc, BCH Công đoàn, Đoàn Thanh niên và hơn 100 đảng viên thuộc Đảng bộ Nhà trường. Tham gia báo cáo cho Hội nghị là đồng chí Bùi Văn Tiếng - Báo cáo viên Thành ủy Đà Nẵng, Nguyên Trưởng ban Tổ chức Thành ủy Đà Nẵng.
+Phát biểu khai mạc Hội nghị, PGS.TS. Huỳnh Công Pháp - Bí thư Đảng ủy, Hiệu trưởng nhà trường nhấn mạnh, những nội dung được truyền đạt tại hội nghị có ý nghĩa hết sức quan trọng đối với các cấp ủy Đảng, cán bộ, đảng viên Nhà trường. Đảng ủy Nhà trường sẽ sớm triển khai xây dựng chương trình hành động cụ thể, cùng với sự đoàn kết, đồng lòng, ủng hộ, hưởng ứng của cán bộ, đảng viên; tôi hy vọng những nhiệm vụ chính trị trọng tâm của Nhà trường sẽ sớm được triển khai và đạt nhiều kết quả tốt đẹp, góp phần thiết thực thực hiện thắng lợi Nghị quyết Đại hội XIII của Đảng nói chung và nghị quyết Đảng bộ ĐHĐN và Nhà trường nói riêng.
+</span> <br> <br>
+</div>

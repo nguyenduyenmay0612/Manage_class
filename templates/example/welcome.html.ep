@@ -1,0 +1,21 @@
+% layout 'frontend/index';
+% title 'Welcome';
+<h2>TIN TỨC | SỰ KIỆN</h2>
+<div class= "row-content">
+  <p><b><a href="/sukien" style="color:black">VKU tổ chức Hội nghị nghiên cứu, học tập, quán triệt, tuyên truyền và triển khai Nghị quyết Hội nghị lần thứ sáu của Ban chấp hành Trung ương Đảng khóa XIII</a></b></p>
+  <div col-sm>
+  <img src="assets\image\tintuc1.jfif" alt="school" style ="margin-left:120px"> <br>
+  </div>
+  <div col-sm>
+  Thực hiện Kế hoạch số 912-KH/ĐU ngày 05/12/2022 của Đảng ủy Đại học Đà Nẵng, sáng ngày 24/12/2022, Đảng ủy Trường Đại học Công nghệ Thông tin và Truyền thông Việt - Hàn tổ chức Hội nghị nghiên cứu, học tập, quán triệt, tuyên truyền và triển khai Nghị quyết Hội nghị lần thứ VI của Ban Chấp hành Trung ương Đảng khóa XIII.
+  </div>
+</div> <hr>
+<div class= "row-content">
+  <p><b><a href="/sukien" style="color:black">Lễ ký kết MOU giữa VKU – NiXEducation - NecScat hướng tới Xây dựng Lab nghiên cứu và các dự án nghiên cứu ứng dụng trí tuệ nhân tạo và công nghệ mới</a></b></p>
+  <div col-sm-6>
+  <img src="assets\image\tintuc2.jfif" alt="school" style ="margin-left:120px"> <br>
+  </div>
+  <div col-sm-6>
+  Ngày 19/12/2022, Trường Đại học Công nghệ Thông tin và Truyền thông Việt – Hàn (VKU), Đại học Đà Nẵng đã ký kết bản ghi nhớ hợp tác ba bên với Công ty Cổ phần Giáo dục NiX (NiXEducation) và Công ty Cổ phần NecScat (Nhật Bản).
+  </div>
+</div> <hr>
