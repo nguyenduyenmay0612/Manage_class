@@ -52,8 +52,6 @@ sub startup ($self) {
   $r->get('/diemhocphan')->to('Backend_sv#diemhocphan');
   $r->get('/ketqua_xhv')->to('Backend_sv#ketqua_xhv');
   $r->get('/chungchi')->to('Backend_sv#chungchi');  
-
-
 }
 
 1;

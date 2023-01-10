@@ -1,1 +1,16 @@
 % layout 'backend_gv/index';
+
+<h3>
+      Thời khóa biểu tuần 
+      </h3>
+      <table class="w3-table w3-striped w3-bordered">
+        <thead>
+          <tr>
+            <th>Tên HP</th>
+            <th>Giáo viên</th>
+            <th>Thứ</th>
+            <th>Tiết</th>
+            <th>Phòng</th>
+          </tr>
+        </thead>
+      </table>

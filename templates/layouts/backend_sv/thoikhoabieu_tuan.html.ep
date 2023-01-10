@@ -4,56 +4,36 @@
     <div class="col-sm-2 sidenav">  
       <div>
           <br> 
-          <b><a  href="/tkb_ngay">Thời khóa biểu ngày</a></b> <br> <hr>
-          <b><a class="active" href="/tkb_tuan">Thời khóa biểu tuần</a></b> <br> <hr>
+          <!--<b><a  href="/tkb_ngay">Thời khóa biểu ngày</a></b> <br> <hr>-->
+          <!--<b><a class="active" href="/tkb_tuan">Thời khóa biểu tuần</a></b> <br> <hr>-->
                
       </div> <br>
     </div>
     <div class="col-sm-10 text-left"> 
       <h3>
-      Thời khóa biểu tuần 2
+      Thời khóa biểu tuần 
       </h3>
       <table class="w3-table w3-striped w3-bordered">
+        <thead>
           <tr>
+            <th>Tên HP</th>
+            <th>Giáo viên</th>
+            <th>Thứ</th>
             <th>Tiết</th>
-            <th>Thứ 2</th>
-            <th>Thứ 3</th>
-            <th>Thứ 4</th>
-            <th>Thứ 5</th>
-            <th>Thứ 6</th>
+            <th>Phòng</th>
           </tr>
-          <tr>
-            <td>1-2</td>
-            <td>Java nâng cao</td>
-            <td></td>
-            <td></td>
-            <td>Lập trình di động</td>
-            <td></td>
-          </tr>
-          <tr>
-            <td>3-4</td>
-            <td>Web nâng cao</td>
-            <td>Lịch sử Đảng</td>
-            <td></td>
-            <td></td>
-            <td></td>
-          </tr>
-          <tr>
-            <td>6-7</td>
-            <td></td>
-            <td></td>
-            <td>Chủ nghĩa xã hội</td>
-            <td></td>
-            <td></td>
-          </tr>
-           <tr>
-            <td>8-9</td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td>Tương tác người và máy</td>
-          </tr>
+        </thead>
+        <tbody >
+              % foreach my $item (@{$schedule_st}) {
+            <tr>  
+              <td><%= $item->{name_subject} %></td>
+              <td><%= $item->{teacher} %></td>
+              <td><%= $item->{date} %></td>
+              <td><%= $item->{lession} %></td>
+              <td><%= $item->{room} %></td>
+            </tr>
+            %}
+        </tbody>     
         </table>
 
   </div>

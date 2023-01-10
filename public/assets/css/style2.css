@@ -1,0 +1,17 @@
+.container-fluid{
+    margin-top:20px;
+}
+
+.w3-sidebar {
+    width:20%;
+}
+
+footer {
+    background-color: #555;
+    color: white;
+    padding: 15px;
+    position: sticky;
+    flex-shrink: 0;
+    margin-top: 50px;
+}
+  

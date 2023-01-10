@@ -51,9 +51,19 @@ sub loginto_sv($self){
     my $sinhvien = $db_object->resultset('Student')->search({email=>$email,password=>$password})->first;
     # Nếu có user thì sao 
     if ($sinhvien) {
-        $self->render(template => 'layouts/backend_sv/thoikhoabieu_ngay' );
+            my @schedule_st = $self->app->{_dbh}->resultset('ScheduleSt')->search({});
+            @schedule_st  = map { { 
+            name_subject => $_->name_subject,
+            teacher => $_->teacher,
+                room=> $_->room,
+                date => $_->date,
+                lession => $_->lession,
+            } } @schedule_st ;
+
+            $self->render(template => 'layouts/backend_sv/thoikhoabieu_tuan',schedule_st =>\@schedule_st);
+
     } else {
-         $self->flash(error => 'Email hoặc mật khẩu của bạn không đúng');
+        $self->flash(error => 'Email hoặc mật khẩu của bạn không đúng');
         $self->redirect_to('login_sv');
     }
     

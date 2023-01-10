@@ -38,15 +38,8 @@
             <li><a href="/danhba_gv">Giáo viên giảng dạy</a></li>           
             </ul>
         </li>
-        
-        <li>
-            <a type="button" data-toggle="dropdown">Thời khóa biểu<span class="caret"></span></a>
-            <ul class="dropdown-menu">
-            <li><a href="/tkb_ngay">TKB hôm nay</a></li>
-            <li><a href="/tkb_tuan">TKB tuần</a></li>
-            <li><a href="/tkb_ngay">TKB toàn khóa</a></li>
-            </ul>
-        </li>
+        <li><a href="/tkb_tuan">Thời khóa biểu</a></li>
+       
         <li>
             <a type="button" data-toggle="dropdown">Kết quả học tập<span class="caret"></span></a>
             <ul class="dropdown-menu">
