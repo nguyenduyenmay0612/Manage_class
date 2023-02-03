@@ -52,6 +52,22 @@ sub startup ($self) {
   $r->get('/diemhocphan')->to('Backend_sv#diemhocphan');
   $r->get('/ketqua_xhv')->to('Backend_sv#ketqua_xhv');
   $r->get('/chungchi')->to('Backend_sv#chungchi');  
+
+  #lichday
+  $r->get('/lichday')->to('Backend_gv#lichday');
+
+  #danhbadienthoai1
+  $r->get('/danhba_sv1')->to('Backend_gv#danhba_sv');
+  $r->get('/danhba_gv1')->to('Backend_gv#danhba_gv');
+
+  #quan ly sinh viên
+  $r->get('/danhsach_sv')->to('Backend_gv#danhsach_sv');
+  $r->get('/them_sv')->to('Backend_gv#them_view');
+  $r->post('/them_sv')->to('Backend_gv#them_sv');
+  $r->get('/sua_sv')->to('Backend_gv#sua_view');
+  $r->post('/sua_sv')->to('Backend_gv#sua_sv');
 }
+
+  
 
 1;

@@ -48,9 +48,9 @@ sub loginto_sv($self){
      # Conect DB
     my $db_object = $self->app->{_dbh};
     
-    my $sinhvien = $db_object->resultset('Student')->search({email=>$email,password=>$password})->first;
+    my $student = $db_object->resultset('Student')->search({email=>$email,password=>$password})->first;
     # Nếu có user thì sao 
-    if ($sinhvien) {
+    if ($student) {
             my @schedule_st = $self->app->{_dbh}->resultset('ScheduleSt')->search({});
             @schedule_st  = map { { 
             name_subject => $_->name_subject,
@@ -65,9 +65,7 @@ sub loginto_sv($self){
     } else {
         $self->flash(error => 'Email hoặc mật khẩu của bạn không đúng');
         $self->redirect_to('login_sv');
-    }
-    
-   
+    }     
 }
 
 sub loginto_gv($self){
@@ -80,10 +78,18 @@ sub loginto_gv($self){
      # Conect DB
     my $db_object = $self->app->{_dbh};
     
-    my $user = $db_object->resultset('Teacher')->search({email=>$email,password=>$password})->first;
+    my $teacher = $db_object->resultset('Teacher')->search({email=>$email,password=>$password})->first;
     # Nếu có user thì sao 
-    if ($user) {
-        $self->render(template => 'layouts/backend_gv/lichday_ngay');
+    if ($teacher) {
+        my @schedule_tch = $self->app->{_dbh}->resultset('ScheduleTch')->search({});
+        @schedule_tch  = map { { 
+            name_subject => $_->name_subject,
+            lession => $_->lession,
+            room=> $_->room,
+            date => $_->date,
+        } } @schedule_tch ;
+
+        $self->render(template => 'layouts/backend_gv/lichday',schedule_tch =>\@schedule_tch);
     } else {
          $self->flash(error => 'Email hoặc mật khẩu của bạn không đúng');
         $self->redirect_to('login_gv');

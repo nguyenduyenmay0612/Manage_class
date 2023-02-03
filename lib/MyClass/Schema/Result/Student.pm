@@ -110,26 +110,9 @@ __PACKAGE__->add_columns(
 
 __PACKAGE__->set_primary_key("id_student");
 
-=head1 RELATIONS
 
-=head2 scores
-
-Type: has_many
-
-Related object: L<MyClass::Schema::Result::Score>
-
-=cut
-
-__PACKAGE__->has_many(
-  "scores",
-  "MyClass::Schema::Result::Score",
-  { "foreign.id_student" => "self.id_student" },
-  { cascade_copy => 0, cascade_delete => 0 },
-);
-
-
-# Created by DBIx::Class::Schema::Loader v0.07051 @ 2023-01-05 10:21:59
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:89l/c7v594rfJqtoUCBrHg
+# Created by DBIx::Class::Schema::Loader v0.07051 @ 2023-02-03 13:46:43
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:NufOci3qvuCJjQB0bstWTQ
 
 
 # You can replace this text with custom code or comments, and it will be preserved on regeneration

@@ -18,21 +18,22 @@
       <h3 class="w3-bar-item">Tùy chọn</h3>
       <ul class="nav navbar-nav">
         <li><a href="/lylich_sv"  class="w3-bar-item w3-button">Thông tin cá nhân</a></li> <br> <hr>
-        <li><a href="/tkb_tuan" class="w3-bar-item w3-button">Lịch giảng dạy</a></li> <br><hr>  
+        <li><a href="/lichday" class="w3-bar-item w3-button">Lịch giảng dạy</a></li> <br><hr>  
+        <li>
+            <a type="button" data-toggle="dropdown" class="w3-bar-item w3-button">Quản lý sinh viên<span class="caret"></span></a>
+            <ul class="dropdown-menu">
+            <li><a href="/danhsach_sv">Hiển thị thông tin</a></li>
+            <li><a href="/them_sv">Thêm mới sinh viên</a></li>           
+            </ul>
+        </li><br> <hr>
         <li>
             <a type="button" data-toggle="dropdown" class="w3-bar-item w3-button">Danh bạ điện thoại<span class="caret"></span></a>
             <ul class="dropdown-menu">
-            <li><a href="/danhba_sv">Sinh viên lớp</a></li>
-            <li><a href="/danhba_gv">Giáo viên giảng dạy lớp</a></li>           
+            <li><a href="/danhba_sv1">Sinh viên lớp</a></li>
+            <li><a href="/danhba_gv1">Giáo viên giảng dạy lớp</a></li>           
             </ul>
         </li><br> <hr>    
-        <li>
-            <a type="button" data-toggle="dropdown" class="w3-bar-item w3-button">Danh sách sinh viên<span class="caret"></span></a>
-            <ul class="dropdown-menu">
-            <li><a href="/diemhocphan">Hiển thị thông tin</a></li>
-            <li><a href="/ketqua_xhv">Thêm mới sinh viên</a></li>           
-            </ul>
-        </li><br> <hr>
+        
       </ul>
     </div>
 

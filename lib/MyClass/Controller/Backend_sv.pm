@@ -35,7 +35,7 @@ sub tkb_tuan($self){
 sub danhba_sv($self){
    # my $self = shift;
 
-    my @sinhvien = $self->app->{_dbh}->resultset('Student')->search({});
+    my @student = $self->app->{_dbh}->resultset('Student')->search({});
     #my @sinhvien = $self->app->{_dbh}->resultset('Student')->search({});
 
     #my $db_object = $self->app->{_dbh};
@@ -45,28 +45,28 @@ sub danhba_sv($self){
     #     use Data::Dumper;
     #     print(Dumper($sv));
     # }
-    @sinhvien = map { { 
+    @student = map { { 
        id_student => $_->id_student,
        full_name => $_->full_name,
         #birthday => $_->birthday,
         email => $_->email,
         phone => $_->phone,
-    } } @sinhvien;
+    } } @student;
 
-    $self->render(template => 'layouts/backend_sv/danhbadienthoai_sv', sinhvien=>\@sinhvien);
+    $self->render(template => 'layouts/backend_sv/danhbadienthoai_sv', student=>\@student);
 }
 
 sub danhba_gv($self){
-    my @giaovien = $self->app->{_dbh}->resultset('Teacher')->search({});
-    @giaovien = map { { 
+    my @teacher = $self->app->{_dbh}->resultset('Teacher')->search({});
+    @teacher = map { { 
        id_teacher => $_->id_teacher,
        full_name => $_->full_name,
         #birthday => $_->birthday,
         email => $_->email,
         phone => $_->phone,
-    } } @giaovien;
+    } } @teacher;
 
-    $self->render(template => 'layouts/backend_sv/danhbadienthoai_gv', giaovien=>\@giaovien);
+    $self->render(template => 'layouts/backend_sv/danhbadienthoai_gv', teacher=>\@teacher);
 }
 
 #lylichsinhvien

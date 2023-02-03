@@ -1,25 +1,18 @@
-% layout 'backend_sv/index';
-
-<div class="row content">
-    <div class="col-sm-2 sidenav">  
-      <div>
-          <br> 
-          <b><a class="active" href="/danhba_sv">Danh bạ sinh viên lớp</a></b> <br> <hr>
-          <b><a  href="/danhba_gv">Danh bạ giáo viên</a></b> <br> <hr>
-                
-      </div> <br>
-    </div>
-    <div class="col-sm-10 text-left"> 
+% layout 'backend_gv/index';
+<div> 
       <h3>
-      Danh bạ sinh viên lớp bạn
+      Danh sách sinh viên lớp
       </h3>
       <table class="w3-table w3-striped w3-bordered">
       <thead>
           <tr>
             <th>STT</th>
             <th>Tên sinh viên</th>
+            <th>Ngày sinh</th>
+            <th>Địa chỉ</th>
             <th>Email</th>
             <th>Số điện thoại</th>
+            <th>Cập nhật</th>
           </tr>
       </thead>
       <tbody >
@@ -27,12 +20,13 @@
       <tr>  
         <td><%= $item->{id_student} %></td>
         <td><%= $item->{full_name} %></td>
+        <td><%= $item->{birthday} %></td>
+        <td><%= $item->{address} %></td>
         <td><%= $item->{email} %></td>
         <td><%= $item->{phone} %></td>
+        <td><a href='<%= sua_sv/'.$item->{id_student} %>>Sửa</a>|<a href='<%= xoa_sv/'.$item->{id_student} %>>Xóa</a></td>
       </tr>
     %}
     </tbody>      
         </table>
-
-  </div>
 </div>
