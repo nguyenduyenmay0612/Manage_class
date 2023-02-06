@@ -8,8 +8,8 @@ use Mojo::Base 'Mojolicious::Controller', -signatures;
 sub lichday($self){
    my @schedule_tch = $self->app->{_dbh}->resultset('ScheduleTch')->search({});
     @schedule_tch  = map { { 
-       name_subject => $_->name_subject,
-       lession => $_->lession,
+        name_subject => $_->name_subject,
+        lession => $_->lession,
         room=> $_->room,
         date => $_->date,
     } } @schedule_tch ;
@@ -84,7 +84,7 @@ sub them_sv{
     }
 
     my $dbh = $self->app->{_dbh};
-    my $student = $dbh->resultset('Student')->search({full_name => $full_name});
+    my $student = $dbh->resultset('Student')->search({ full_name => $full_name });
 
     if (!$student->first) {
         eval {
@@ -99,8 +99,8 @@ sub them_sv{
             # $self ->  render (template =>'students/add_student',
             # message => 'Thêm sinh viên thành công'
             # );
-            $self->flash( message => 'Thêm sinh viên thành công');
-            $self->redirect_to('them_sv');
+        $self->flash( message => 'Thêm sinh viên thành công');
+        $self->redirect_to('them_sv');
     }
         
 }
@@ -109,16 +109,57 @@ sub them_sv{
 
 sub sua_view {
     my $self = shift;
-    my $id = $self->param('id');
+    my $id_student = $self->param('id_student');
     my $dbh = $self->app->{_dbh};
     my $student = $dbh->resultset('Student')->find($id_student);
+    
     # my $data = $self->_MAdminItem->find($id);
     if ($student) {
-         $self->render(template => 'layouts/backend_gv/sua_sv', student=>\@student);
+        $self->render(template => 'layouts/backend_gv/sua_sv', student => $student);
     } else {
-        
+        $self->render(template => 'layouts/backend_gv/danhsach_sv');
     }
 
+}
+sub sua_sv{
+    my $self = shift;
+    my $id_student = $self->param('id_student');
+    my $full_name = $self->param('full_name');
+    my $birthday = $self->param('birthday');
+    my $email = $self->param('email');
+    my $address = $self->param('address');
+    my $phone= $self->param('phone');
+
+    my $dbh = $self->app->{_dbh}; 
+    #my $result = $dbh->resultset('Student')->update({});
+    my $student= $dbh->resultset('Student')->create({});
+    if ($student) {
+        $self->render(template => 'layouts/backend_gv/sua_sv');
+    }
+
+}
+
+#xoa sinh vien 
+sub xoa_sv{
+    my $self = shift;
+    my $id_student = $self->param('id_student');
+    my $dbh = $self->app->{_dbh};
+    #my $record= $dbh->resultset('Student')->find($id_student);
+    my $result = $dbh->resultset('Student')->find($id_student)->delete({});
+    my @student = $self->app->{_dbh}->resultset('Student')->search({});
+    if($result) {
+    @student = map { { 
+       id_student => $_->id_student,
+       full_name => $_->full_name,
+        birthday => $_->birthday,
+        address => $_->address,
+        email => $_->email,
+        phone => $_->phone,
+    } } @student;
+    $self->render(template => 'layouts/backend_gv/danhsach_sv', student =>\@student);
+    }else {
+    $self->render(template => 'layouts/backend_gv/danhsach_sv', student =>\@student);
+    }
 }
 
 1;

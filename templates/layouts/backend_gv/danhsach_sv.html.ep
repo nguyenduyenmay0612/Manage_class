@@ -24,9 +24,14 @@
         <td><%= $item->{address} %></td>
         <td><%= $item->{email} %></td>
         <td><%= $item->{phone} %></td>
-        <td><a href='<%= sua_sv/'.$item->{id_student} %>>Sửa</a>|<a href='<%= xoa_sv/'.$item->{id_student} %>>Xóa</a></td>
+        <td><a href='sua_sv/<%= $item->{id_student} %>'>Sửa</a>|<a onclick="myFunction()" href='xoa_sv/<%= $item->{id_student} %>'>Xóa</a></td>
       </tr>
     %}
     </tbody>      
         </table>
 </div>
+<script>
+function myFunction() {
+  confirm("Bạn có chắc chắn muốn xóa không?");
+}
+</script>

@@ -30,11 +30,13 @@ sub startup ($self) {
   $r->get('/gioithieu')->to('Example#gioithieu');
   $r->get('/tuyensinh')->to('Example#tuyensinh');
 
-  #login
+  #login_logout
   $r->get('/login_sv')->to('Login#login_sv');
   $r->get('/login_gv')->to('Login#login_gv');
   $r->post('/loginto_sv')->to('Login#loginto_sv');
   $r->post('/loginto_gv')->to('Login#loginto_gv');
+  $r->get('/logout')->to('Login#logout');
+  
   
   #thoikhoabieu
   $r->get('/tkb_ngay')->to('Backend_sv#tkb_ngay');
@@ -64,8 +66,9 @@ sub startup ($self) {
   $r->get('/danhsach_sv')->to('Backend_gv#danhsach_sv');
   $r->get('/them_sv')->to('Backend_gv#them_view');
   $r->post('/them_sv')->to('Backend_gv#them_sv');
-  $r->get('/sua_sv')->to('Backend_gv#sua_view');
+  $r->get('/sua_sv/:id_student')->to('Backend_gv#sua_view');
   $r->post('/sua_sv')->to('Backend_gv#sua_sv');
+  $r->get('/xoa_sv/:id_student')->to('Backend_gv#xoa_sv');
 }
 
   

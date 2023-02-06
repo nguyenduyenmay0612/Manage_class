@@ -113,4 +113,9 @@ sub _validate_form($self, $email, $password) {
     return @errors;
 }
 
+sub logout {
+    my $self = shift;
+   $self->redirect_to('/');
+    }
+
 1;
