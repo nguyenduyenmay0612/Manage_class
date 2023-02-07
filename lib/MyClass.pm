@@ -46,9 +46,12 @@ sub startup ($self) {
   #danhbadienthoai
   $r->get('/danhba_sv')->to('Backend_sv#danhba_sv');
   $r->get('/danhba_gv')->to('Backend_sv#danhba_gv');
+  $r->get('/danhba_sv1')->to('Backend_gv#danhba_sv');
+  $r->get('/danhba_gv1')->to('Backend_gv#danhba_gv');
   
-  #lylichsinhvien
-  $r->get('/lylich_sv')->to('Backend_sv#lylich_sv');  
+  #lylich
+  $r->get('/lylich_sv')->to('Backend_sv#lylich_sv'); 
+  $r->get('/lylich_gv')->to('Backend_gv#lylich_gv'); 
    
   #ketquahoctap
   $r->get('/diemhocphan')->to('Backend_sv#diemhocphan');
@@ -58,17 +61,16 @@ sub startup ($self) {
   #lichday
   $r->get('/lichday')->to('Backend_gv#lichday');
 
-  #danhbadienthoai1
-  $r->get('/danhba_sv1')->to('Backend_gv#danhba_sv');
-  $r->get('/danhba_gv1')->to('Backend_gv#danhba_gv');
-
   #quan ly sinh viên
   $r->get('/danhsach_sv')->to('Backend_gv#danhsach_sv');
   $r->get('/them_sv')->to('Backend_gv#them_view');
   $r->post('/them_sv')->to('Backend_gv#them_sv');
-  $r->get('/sua_sv/:id_student')->to('Backend_gv#sua_view');
-  $r->post('/sua_sv')->to('Backend_gv#sua_sv');
+  $r->get('/sua_sv/:id')->to('Backend_gv#sua_view');
+  $r->post('/sua_sv/:id')->to('Backend_gv#sua_sv');
   $r->get('/xoa_sv/:id_student')->to('Backend_gv#xoa_sv');
+
+  #cap nhat thong tin giang vien
+  $r->get('/sua_gv')->to('Backend_gv#sua_gv');
 }
 
   

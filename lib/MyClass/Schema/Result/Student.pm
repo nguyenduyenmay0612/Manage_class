@@ -76,7 +76,7 @@ __PACKAGE__->table("student");
 =head2 password
 
   data_type: 'varchar'
-  is_nullable: 0
+  is_nullable: 1
   size: 45
 
 =cut
@@ -95,7 +95,7 @@ __PACKAGE__->add_columns(
   "email",
   { data_type => "varchar", is_nullable => 0, size => 45 },
   "password",
-  { data_type => "varchar", is_nullable => 0, size => 45 },
+  { data_type => "varchar", is_nullable => 1, size => 45 },
 );
 
 =head1 PRIMARY KEY
@@ -111,8 +111,8 @@ __PACKAGE__->add_columns(
 __PACKAGE__->set_primary_key("id_student");
 
 
-# Created by DBIx::Class::Schema::Loader v0.07051 @ 2023-02-03 13:46:43
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:NufOci3qvuCJjQB0bstWTQ
+# Created by DBIx::Class::Schema::Loader v0.07051 @ 2023-02-07 15:30:44
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:dRqPU6bolM1WUDXcT9NGnA
 
 
 # You can replace this text with custom code or comments, and it will be preserved on regeneration

@@ -30,7 +30,7 @@
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav">
         <li class="active"><a href="/">Thông báo</a></li>
-        <li><a href="/lylich_sv">Lý lịch sinh viên</a></li>
+        <li><a href="/lylich_gv">Lý lịch sinh viên</a></li>
         <li>
             <a type="button" data-toggle="dropdown">Danh bạ điện thoại<span class="caret"></span></a>
             <ul class="dropdown-menu">
@@ -50,8 +50,7 @@
         </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="/logout"><span class=""></span> Đăng xuất</a></li>
-        
+        <li><a href="/logout"><span class=""></span> Đăng xuất</a></li>       
       </ul>
     </div>
   </div>

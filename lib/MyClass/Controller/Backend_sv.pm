@@ -71,11 +71,9 @@ sub danhba_gv($self){
 
 #lylichsinhvien
 sub lylich_sv($self){
-    # my $self = shift;
     my $id_student = $self->param('id_student');
     my $dbh = $self->app->{_dbh};
     my $student = $dbh->resultset('Student')->search({"id_student" => 1})->first;
-    #$log->info(Dumper($student));
     if ($student) {
         my $student_info = +{
             full_name => $student->full_name,
@@ -87,9 +85,6 @@ sub lylich_sv($self){
         $self->render(template => 'layouts/backend_sv/lylich_sv', student=>$student_info);
     }    
 }
-
-
-
 #ketquahoctap
 sub diemhocphan($self){
     $self->render(template => 'layouts/backend_sv/diemhocphan');

@@ -6,7 +6,9 @@
       <div>
           <br> 
           <b>Lý lịch sinh viên</b> <br> <hr>
-            Tên: <%= $student->{full_name} %><hr>               
+            Tên: <%= $student->{full_name} %><hr> 
+            Ảnh đại diện: <br>
+
       </div> <br>
     </div>
     <div class="col-sm-10 text-left"> 

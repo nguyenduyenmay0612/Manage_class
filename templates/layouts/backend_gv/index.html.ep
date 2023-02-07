@@ -17,7 +17,7 @@
     <div class="w3-sidebar w3-light-grey w3-bar-block">
       <h3 class="w3-bar-item">Tùy chọn</h3>
       <ul class="nav navbar-nav">
-        <li><a href="/lylich_sv" class="w3-bar-item w3-button">Thông tin cá nhân</a></li> <br> <hr>
+        <li><a href="/lylich_gv" class="w3-bar-item w3-button">Thông tin cá nhân</a></li> <br> <hr>
         <li><a href="/lichday" class="w3-bar-item w3-button">Lịch giảng dạy</a></li> <br><hr>  
         <li>
             <a type="button" data-toggle="dropdown" class="w3-bar-item w3-button">Quản lý sinh viên<span class="caret"></span></a>

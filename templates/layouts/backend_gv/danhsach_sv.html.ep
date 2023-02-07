@@ -6,7 +6,7 @@
       <table class="w3-table w3-striped w3-bordered">
       <thead>
           <tr>
-            <th>STT</th>
+            <th>ID</th>
             <th>Tên sinh viên</th>
             <th>Ngày sinh</th>
             <th>Địa chỉ</th>
@@ -28,7 +28,8 @@
       </tr>
     %}
     </tbody>      
-        </table>
+  </table>
+  
 </div>
 <script>
 function myFunction() {
