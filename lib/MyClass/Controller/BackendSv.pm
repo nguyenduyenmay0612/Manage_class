@@ -1,4 +1,4 @@
-package MyClass::Controller::Backend_sv;
+package MyClass::Controller::BackendSv;
 use utf8;
 use open ':encoding(utf8)';
 binmode(STDOUT, ":utf8");
@@ -8,43 +8,32 @@ use Mojo::Log;
 my $log = Mojo::Log->new(path => '/log/app.log', level => 'warn');
 #thoikhoabieu
 
-sub tkb_ngay($self){
-    $self->render(template => 'layouts/backend_sv/thoikhoabieu_ngay');
+sub schedule_day($self){
+    $self->render(template => 'layouts/backend_sv/schedule_day');
 }
 
-sub tkb_tuan($self){
-   my @schedule_st = $self->app->{_dbh}->resultset('ScheduleSt')->search({});
+sub schedule_week($self){
+   my @schedule_sv = $self->app->{_dbh}->resultset('ScheduleSt')->search({});
     #my @sinhvien = $self->app->{_dbh}->resultset('Student')->search({});
 
     #my $db_object = $self->app->{_dbh};
     
     #my $sinhvien = $db_object->resultset('Student')->search({});
 
-    @schedule_st  = map { { 
+    @schedule_sv  = map { { 
        name_subject => $_->name_subject,
        teacher => $_->teacher,
         room=> $_->room,
         date => $_->date,
         lession => $_->lession,
-    } } @schedule_st ;
+    } } @schedule_sv ;
 
-    $self->render(template => 'layouts/backend_sv/thoikhoabieu_tuan',schedule_st =>\@schedule_st);
+    $self->render(template => 'layouts/backend_sv/schedule_week',schedule_sv =>\@schedule_sv);
 }
 
 #danhbadienthoai
-sub danhba_sv($self){
-   # my $self = shift;
-
+sub phone_sv($self){
     my @student = $self->app->{_dbh}->resultset('Student')->search({});
-    #my @sinhvien = $self->app->{_dbh}->resultset('Student')->search({});
-
-    #my $db_object = $self->app->{_dbh};
-    
-    #my $sinhvien = $db_object->resultset('Student')->search({});
-    # for my $sv (@sinhvien) {
-    #     use Data::Dumper;
-    #     print(Dumper($sv));
-    # }
     @student = map { { 
        id_student => $_->id_student,
        full_name => $_->full_name,
@@ -53,10 +42,10 @@ sub danhba_sv($self){
         phone => $_->phone,
     } } @student;
 
-    $self->render(template => 'layouts/backend_sv/danhbadienthoai_sv', student=>\@student);
+    $self->render(template => 'layouts/backend_sv/phone_sv', student=>\@student);
 }
 
-sub danhba_gv($self){
+sub phone_gv($self){
     my @teacher = $self->app->{_dbh}->resultset('Teacher')->search({});
     @teacher = map { { 
        id_teacher => $_->id_teacher,
@@ -66,11 +55,11 @@ sub danhba_gv($self){
         phone => $_->phone,
     } } @teacher;
 
-    $self->render(template => 'layouts/backend_sv/danhbadienthoai_gv', teacher=>\@teacher);
+    $self->render(template => 'layouts/backend_sv/phone_gv', teacher=>\@teacher);
 }
 
 #lylichsinhvien
-sub lylich_sv($self){
+sub profile_sv($self){
     my $id_student = $self->param('id_student');
     my $dbh = $self->app->{_dbh};
     my $student = $dbh->resultset('Student')->search({"id_student" => 1})->first;
@@ -82,7 +71,7 @@ sub lylich_sv($self){
             email => $student->email,
             phone => $student->phone,
         };
-        $self->render(template => 'layouts/backend_sv/lylich_sv', student=>$student_info);
+        $self->render(template => 'layouts/backend_sv/profile_sv', student=>$student_info);
     }    
 }
 #ketquahoctap

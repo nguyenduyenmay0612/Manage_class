@@ -1,11 +1,11 @@
-package MyClass::Controller::Backend_gv;
+package MyClass::Controller::BackendGv;
 use utf8;
 use open ':encoding(utf8)';
 binmode(STDOUT, ":utf8");
 use Mojo::Base 'Mojolicious::Controller', -signatures;
 use Data::Dumper;
 #ly lich giang vien
-sub lylich_gv($self){
+sub profile_gv($self){
     my $id_teacher = $self->param('id_teacher');
     my $dbh = $self->app->{_dbh};
     my $teacher = $dbh->resultset('Teacher')->search({"id_teacher" => 1})->first;
@@ -17,25 +17,25 @@ sub lylich_gv($self){
             email => $teacher->email,
             phone => $teacher->phone,
         };
-        $self->render(template => 'layouts/backend_gv/lylich_gv', teacher=>$teacher_info);
+        $self->render(template => 'layouts/backend_gv/profile_gv', teacher=>$teacher_info);
     }    
 }
 
 #lich giang day theo tuan của giang vien
-sub lichday($self){
-   my @schedule_tch = $self->app->{_dbh}->resultset('ScheduleTch')->search({});
-    @schedule_tch  = map { { 
+sub schedule_gv($self){
+   my @schedule_gv = $self->app->{_dbh}->resultset('ScheduleTch')->search({});
+    @schedule_gv  = map { { 
         name_subject => $_->name_subject,
         lession => $_->lession,
         room=> $_->room,
         date => $_->date,
-    } } @schedule_tch ;
+    } } @schedule_gv ;
 
-    $self->render(template => 'layouts/backend_gv/lichday',schedule_tch =>\@schedule_tch);
+    $self->render(template => 'layouts/backend_gv/schedule_gv',schedule_gv =>\@schedule_gv);
 }
 
 #hien thi danh ba dien thoai sinh vien lop
-sub danhba_sv($self){
+sub phone_sv($self){
     my @student = $self->app->{_dbh}->resultset('Student')->search({});
     @student = map { { 
        id_student => $_->id_student,
@@ -44,11 +44,11 @@ sub danhba_sv($self){
         phone => $_->phone,
     } } @student;
 
-    $self->render(template => 'layouts/backend_gv/danhbadienthoai_sv', student=>\@student);
+    $self->render(template => 'layouts/backend_gv/phone_sv', student=>\@student);
 }
 
 #hien thi danh ba dien thoai giang vien lop
-sub danhba_gv($self){
+sub phone_gv($self){
     my @teacher = $self->app->{_dbh}->resultset('Teacher')->search({});
     @teacher = map { { 
        id_teacher => $_->id_teacher,
@@ -57,11 +57,11 @@ sub danhba_gv($self){
         phone => $_->phone,
     } } @teacher;
 
-    $self->render(template => 'layouts/backend_gv/danhbadienthoai_gv', teacher=>\@teacher);
+    $self->render(template => 'layouts/backend_gv/phone_gv', teacher=>\@teacher);
 }
 
 #hien thi danh sach thong tin sinh vien
-sub danhsach_sv($self){
+sub list_sv($self){
     my @student = $self->app->{_dbh}->resultset('Student')->search({});
     @student = map { { 
        id_student => $_->id_student,
@@ -72,19 +72,19 @@ sub danhsach_sv($self){
         phone => $_->phone,
     } } @student;
 
-    $self->render(template => 'layouts/backend_gv/danhsach_sv', student=>\@student);
+    $self->render(template => 'layouts/backend_gv/list_sv', student=>\@student);
 }
 
 #them sinh vien moi
-sub them_view {
+sub add_view {
     my $self = shift;  
-    $self -> render(template => 'layouts/backend_gv/them_sv', 
+    $self -> render(template => 'layouts/backend_gv/add_sv', 
             error    => $self->flash('error'),
             message  => $self->flash('message')
     );
 }
 
-sub them_sv {
+sub add_sv {
     my $self = shift;
     my $id_student = $self->param('id_student');
     my $full_name = $self->param('full_name');
@@ -92,46 +92,52 @@ sub them_sv {
     my $email = $self->param('email');
     my $address = $self->param('address');
     my $phone= $self->param('phone');
+    my $password= $self->param('password');
 
-    if (! $full_name || ! $birthday || ! $email || ! $address ) {
-        $self->flash(error => 'Tên sinh viên, ngày sinh, email và địa chỉ là các trường không thể thiếu');
-        $self->redirect_to('them_sv');
+    if (! $full_name || ! $birthday || ! $email || ! $address || ! $password) {
+        $self->flash(error => 'Tên sinh viên, ngày sinh, email, password và địa chỉ là các trường không thể thiếu');
+        $self->redirect_to('add_sv');
     }
 
     my $dbh = $self->app->{_dbh};
-    my $student = $dbh->resultset('Student')->search({ email => $email, id_student => $id_student })->first;
+    my $student = $dbh->resultset('Student')->search({ email => $email});
 
-    if (!$student) {
+    if (!$student ->first ) {
         eval {
             $dbh->resultset('Student')->create({
-                id_student => $id_student,
+                # id_student => $id_student,
                 full_name => $full_name,
                 birthday => $birthday,
                 address => $address,
                 phone => $phone,               
-                email => $email
+                email => $email,
+                password => $password
             });
         };
         $self->flash( message => 'Thêm sinh viên thành công');
-        $self->redirect_to('them_sv');
-    }       
+        $self->redirect_to('add_sv');
+    } 
+    else {
+        $self->flash( error => 'Không được thêm email đã trùng lặp');
+        $self->redirect_to('add_sv');
+    }     
 }
 
 #sua thong tin sinh vien
-sub sua_view {
+sub edit_view {
     my $self = shift;
     my $id_student = $self->param('id');
     my $dbh = $self->app->{_dbh};
     my $student = $dbh->resultset('Student')->find($id_student);
     
     if ($student) {
-        $self->render(template => 'layouts/backend_gv/sua_sv', student => $student ,student => $student, message => '', error=>'');
+        $self->render(template => 'layouts/backend_gv/edit_sv', student => $student ,student => $student, message => '', error=>'');
     } else {
-        $self->render(template => 'layouts/backend_gv/danhsach_sv');
+        $self->render(template => 'layouts/backend_gv/list_sv');
     }
 
 }
-sub sua_sv{
+sub edit_sv {
     my $self = shift;
     my $id_student = $self->param('id');
     my $full_name = $self->param('full_name');
@@ -150,15 +156,15 @@ sub sua_sv{
     my $student = $dbh->resultset('Student')->find($id_student);
 
     if ($student) {
-        $self->render(template => 'layouts/backend_gv/sua_sv', student => $student, message => 'Cập nhật thông tin thành công', error=>'');
+        $self->render(template => 'layouts/backend_gv/edit_sv', student => $student, message => 'Cập nhật thông tin thành công', error=>'');
     } else {
-        $self->render(template => 'layouts/backend_gv/danhsach_sv');
+        $self->render(template => 'layouts/backend_gv/list_sv');
     }
 
 }
 
 #xoa sinh vien 
-sub xoa_sv{
+sub delete_sv{
     my $self = shift;
     my $id_student = $self->param('id_student');
     my $dbh = $self->app->{_dbh};
@@ -173,10 +179,26 @@ sub xoa_sv{
         email => $_->email,
         phone => $_->phone,
     } } @student;
-    $self->render(template => 'layouts/backend_gv/danhsach_sv', student =>\@student);
+    $self->render(template => 'layouts/backend_gv/list_sv', student =>\@student);
     }else {
-    $self->render(template => 'layouts/backend_gv/danhsach_sv', student =>\@student);
+    $self->render(template => 'layouts/backend_gv/list_sv', student =>\@student);
     }
+}
+
+sub search_sv{
+    my $self = shift;
+    my $full_name = $self->param('full_name');
+    my @student = $self->app->{_dbh}->resultset('Student')->search_like({ full_name => '%'.$full_name.'%' });
+    @student = map { { 
+       id_student => $_->id_student,
+       full_name => $_->full_name,
+        birthday => $_->birthday,
+        address => $_->address,
+        email => $_->email,
+        phone => $_->phone,
+    } } @student;
+
+    $self->render(template => 'layouts/backend_gv/list_sv', student=>\@student);
 }
 
 1;

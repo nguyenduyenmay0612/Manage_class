@@ -26,24 +26,6 @@ sub loginto_sv($self){
     
     my @valid_input = $self->_validate_form($email, $password);
 
-    # check validate
-    # if(scalar @valid_input > 0){
-    #     my $output =  {
-    #         ok => Mojo::JSON->false,
-    #         code => '202',
-    #         message => [@valid_input]
-    #     };
-    #     $self->render(
-    #         template => 'layouts/login_student',
-    #         datas=> $output,
-    #         success_alert => 0,
-    #         error_alert => 1
-    #     );
-    # }
-
-
-
-    # pass validater
     # kiem tra user có ton tại trong Db
      # Conect DB
     my $db_object = $self->app->{_dbh};
@@ -51,16 +33,16 @@ sub loginto_sv($self){
     my $student = $db_object->resultset('Student')->search({email=>$email,password=>$password})->first;
     # Nếu có user thì sao 
     if ($student) {
-            my @schedule_st = $self->app->{_dbh}->resultset('ScheduleSt')->search({});
-            @schedule_st  = map { { 
+            my @schedule_sv = $self->app->{_dbh}->resultset('ScheduleSt')->search({});
+            @schedule_sv  = map { { 
             name_subject => $_->name_subject,
             teacher => $_->teacher,
                 room=> $_->room,
                 date => $_->date,
                 lession => $_->lession,
-            } } @schedule_st ;
+            } } @schedule_sv ;
 
-            $self->render(template => 'layouts/backend_sv/thoikhoabieu_tuan',schedule_st =>\@schedule_st);
+            $self->render(template => 'layouts/backend_sv/schedule_week',schedule_sv =>\@schedule_sv);
 
     } else {
         $self->flash(error => 'Email hoặc mật khẩu của bạn không đúng');
@@ -81,15 +63,15 @@ sub loginto_gv($self){
     my $teacher = $db_object->resultset('Teacher')->search({email=>$email,password=>$password})->first;
     # Nếu có user thì sao 
     if ($teacher) {
-        my @schedule_tch = $self->app->{_dbh}->resultset('ScheduleTch')->search({});
-        @schedule_tch  = map { { 
+        my @schedule_gv = $self->app->{_dbh}->resultset('ScheduleTch')->search({});
+        @schedule_gv  = map { { 
             name_subject => $_->name_subject,
             lession => $_->lession,
             room=> $_->room,
             date => $_->date,
-        } } @schedule_tch ;
+        } } @schedule_gv ;
 
-        $self->render(template => 'layouts/backend_gv/lichday',schedule_tch =>\@schedule_tch);
+        $self->render(template => 'layouts/backend_gv/schedule_gv',schedule_gv =>\@schedule_gv);
     } else {
          $self->flash(error => 'Email hoặc mật khẩu của bạn không đúng');
         $self->redirect_to('login_gv');

@@ -8,10 +8,10 @@
                 <div class="card">
                   <div class="card-body">                                  
                     <form method="post" action='/them_sv' class="form-add-student">
-                      <div class="form-group">
+                      <!--<div class="form-group">
                         <label>ID sinh viên</label>
                         <input type="text" class="form-control" id="id_student" name="id_student" placeholder="ID sinh viên">
-                      </div>
+                      </div> -->
                       <div class="form-group">
                         <label>Tên sinh viên</label>
                         <input type="text" class="form-control" id="full_name" name="full_name" placeholder="Tên sinh viên">
@@ -23,6 +23,10 @@
                       <div class="form-group">
                         <label>Email</label>
                         <input type="email" class="form-control" id="email"  name ="email" placeholder="Email">
+                      </div>
+                      <div class="form-group">
+                        <label>Password</label>
+                        <input type="text" class="form-control" id="password"  name ="password" placeholder="Password">
                       </div>
                       <div class="form-group">
                         <label>Address</label>

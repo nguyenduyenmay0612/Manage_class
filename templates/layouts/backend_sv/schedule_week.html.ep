@@ -24,7 +24,7 @@
           </tr>
         </thead>
         <tbody >
-              % foreach my $item (@{$schedule_st}) {
+              % foreach my $item (@{$schedule_sv}) {
             <tr>  
               <td><%= $item->{name_subject} %></td>
               <td><%= $item->{teacher} %></td>

@@ -39,40 +39,42 @@ sub startup ($self) {
   
   
   #thoikhoabieu
-  $r->get('/tkb_ngay')->to('Backend_sv#tkb_ngay');
-  $r->get('/tkb_tuan')->to('Backend_sv#tkb_tuan');
+  $r->get('/schedule_day')->to('BackendSv#schedule_day');
+  $r->get('/schedule_week')->to('BackendSv#schedule_week');
 
 
-  #danhbadienthoai
-  $r->get('/danhba_sv')->to('Backend_sv#danhba_sv');
-  $r->get('/danhba_gv')->to('Backend_sv#danhba_gv');
-  $r->get('/danhba_sv1')->to('Backend_gv#danhba_sv');
-  $r->get('/danhba_gv1')->to('Backend_gv#danhba_gv');
+  #phonedienthoai
+  $r->get('/phone_sv')->to('BackendSv#phone_sv');
+  $r->get('/phone_gv')->to('BackendSv#phone_gv');
+  $r->get('/phone_sv1')->to('BackendGv#phone_sv');
+  $r->get('/phone_gv1')->to('BackendGv#phone_gv');
   
   #lylich
-  $r->get('/lylich_sv')->to('Backend_sv#lylich_sv'); 
-  $r->get('/lylich_gv')->to('Backend_gv#lylich_gv'); 
+  $r->get('/lylich_sv')->to('BackendSv#lylich_sv'); 
+  $r->get('/lylich_gv')->to('BackendGv#lylich_gv'); 
    
   #ketquahoctap
-  $r->get('/diemhocphan')->to('Backend_sv#diemhocphan');
-  $r->get('/ketqua_xhv')->to('Backend_sv#ketqua_xhv');
-  $r->get('/chungchi')->to('Backend_sv#chungchi');  
+  $r->get('/diemhocphan')->to('BackendSv#diemhocphan');
+  $r->get('/ketqua_xhv')->to('BackendSv#ketqua_xhv');
+  $r->get('/chungchi')->to('BackendSv#chungchi');  
 
   #lichday
-  $r->get('/lichday')->to('Backend_gv#lichday');
+  $r->get('/schedule_gv')->to('BackendGv#schedule_gv');
 
   #quan ly sinh viên
-  $r->get('/danhsach_sv')->to('Backend_gv#danhsach_sv');
-  $r->get('/them_sv')->to('Backend_gv#them_view');
-  $r->post('/them_sv')->to('Backend_gv#them_sv');
-  $r->get('/sua_sv/:id')->to('Backend_gv#sua_view');
-  $r->post('/sua_sv/:id')->to('Backend_gv#sua_sv');
-  $r->get('/xoa_sv/:id_student')->to('Backend_gv#xoa_sv');
+  $r->get('/list_sv')->to('BackendGv#list_sv');
+  $r->get('/add_sv')->to('BackendGv#add_view');
+  $r->post('/add_sv')->to('BackendGv#add_sv');
+  $r->get('/edit_sv/:id')->to('BackendGv#edit_view');
+  $r->post('/edit_sv/:id')->to('BackendGv#edit_sv');
+  $r->get('/delete_sv/:id_student')->to('BackendGv#delete_sv');
 
   #cap nhat thong tin giang vien
-  $r->get('/sua_gv')->to('Backend_gv#sua_gv');
-}
+  $r->get('/edit_gv')->to('BackendGv#edit_gv');
 
+  #tim kiem sinh vien
+  $r->post('/search_sv')->to('BackendGv#search_sv');
+}
   
 
 1;

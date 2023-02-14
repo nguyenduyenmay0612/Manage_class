@@ -30,15 +30,15 @@
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav">
         <li class="active"><a href="/">Thông báo</a></li>
-        <li><a href="/lylich_gv">Lý lịch sinh viên</a></li>
+        <li><a href="/profile_sv">Lý lịch sinh viên</a></li>
         <li>
             <a type="button" data-toggle="dropdown">Danh bạ điện thoại<span class="caret"></span></a>
             <ul class="dropdown-menu">
-            <li><a href="/danhba_sv">Sinh viên lớp</a></li>
-            <li><a href="/danhba_gv">Giáo viên giảng dạy</a></li>           
+            <li><a href="/phone_sv">Sinh viên lớp</a></li>
+            <li><a href="/phone_gv">Giáo viên giảng dạy</a></li>           
             </ul>
         </li>
-        <li><a href="/tkb_tuan">Thời khóa biểu</a></li>
+        <li><a href="/schedule_week">Thời khóa biểu</a></li>
        
         <li>
             <a type="button" data-toggle="dropdown">Kết quả học tập<span class="caret"></span></a>

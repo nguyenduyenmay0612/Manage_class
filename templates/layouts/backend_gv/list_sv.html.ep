@@ -1,9 +1,14 @@
 % layout 'backend_gv/index';
-<div> 
-      <h3>
-      Danh sách sinh viên lớp
-      </h3>
-      <table class="w3-table w3-striped w3-bordered">
+<div>
+  <br>
+  <form action='/timkiem_sv' method = "post">
+  <input type="text" class="form-search" name="full_name" placeholder="Tìm kiếm sinh viên...">
+  <button type="submit" class="btn btn-primary me-2">Search</button>
+  </form>
+  <h3>
+    Danh sách sinh viên lớp
+  </h3>
+  <table class="w3-table w3-striped w3-bordered">
       <thead>
           <tr>
             <th>ID</th>
@@ -28,8 +33,7 @@
       </tr>
     %}
     </tbody>      
-  </table>
-  
+  </table> 
 </div>
 <script>
 function myFunction() {
