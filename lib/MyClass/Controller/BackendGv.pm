@@ -4,6 +4,7 @@ use open ':encoding(utf8)';
 binmode(STDOUT, ":utf8");
 use Mojo::Base 'Mojolicious::Controller', -signatures;
 use Data::Dumper;
+
 #ly lich giang vien
 sub profile_gv($self){
     my $id_teacher = $self->param('id_teacher');
@@ -62,17 +63,29 @@ sub phone_gv($self){
 
 #hien thi danh sach thong tin sinh vien
 sub list_sv($self){
-    my @student = $self->app->{_dbh}->resultset('Student')->search({});
+
+    my $dbh = $self->app->{dbh};                
+    my $paginate = $self->app->_get_pagination;    
+    my $page = ( !$self->param('page') ) ? 1 : $self->param('page');
+    my $total_students =$self->app->{_dbh}->resultset('Student')->search({})->count;
+
+    my @student = $self->app->{_dbh}->resultset('Student')->search({},
+    { rows => $paginate, page => $page }
+    );
     @student = map { { 
-       id_student => $_->id_student,
-       full_name => $_->full_name,
+        id_student => $_->id_student,
+        full_name => $_->full_name,
         birthday => $_->birthday,
         address => $_->address,
         email => $_->email,
         phone => $_->phone,
     } } @student;
 
-    $self->render(template => 'layouts/backend_gv/list_sv', student=>\@student);
+    $self->render(template => 'layouts/backend_gv/list_sv', 
+    student=>\@student,
+    total_pages => $total_students / $paginate,
+    current_page => $page
+    );
 }
 
 #them sinh vien moi
@@ -114,12 +127,10 @@ sub add_sv {
                 password => $password
             });
         };
-        $self->flash( message => 'Thêm sinh viên thành công');
-        $self->redirect_to('add_sv');
+       $self->render(template => 'layouts/backend_gv/add_sv', student => $student, message => 'Thêm thành công', error=>'');
     } 
     else {
-        $self->flash( error => 'Không được thêm email đã trùng lặp');
-        $self->redirect_to('add_sv');
+        $self->render(template => 'layouts/backend_gv/add_sv', student => $student, message => '', error=>'Email này đã tồn tại');
     }     
 }
 
@@ -146,21 +157,24 @@ sub edit_sv {
     my $address = $self->param('address');
     my $phone= $self->param('phone');
     my $dbh = $self->app->{_dbh}; 
-    my $result= $dbh->resultset('Student')->find($id_student)->update({  
-        full_name => $full_name,
-        birthday => $birthday,
-        address => $address,
-        email => $email,
-        phone => $phone,
-        });
+
     my $student = $dbh->resultset('Student')->find($id_student);
-
     if ($student) {
-        $self->render(template => 'layouts/backend_gv/edit_sv', student => $student, message => 'Cập nhật thông tin thành công', error=>'');
-    } else {
-        $self->render(template => 'layouts/backend_gv/list_sv');
+        if ( ! $full_name || ! $birthday || ! $email || ! $address || ! $phone) {
+            $self->render(template => 'layouts/backend_gv/edit_sv', student => $student, error=>'Không được bỏ trống các trường trên', message =>'');
+        }    
+        else {
+            my $result= $dbh->resultset('Student')->find($id_student)->update({  
+            full_name => $full_name,
+            birthday => $birthday,
+            address => $address,
+            email => $email,
+            phone => $phone,
+            });
+            my $student1 = $dbh->resultset('Student')->find($id_student);
+            $self->render(template => 'layouts/backend_gv/edit_sv', student => $student1, message => 'Cập nhật thông tin thành công', error=>'');   
+        }
     }
-
 }
 
 #xoa sinh vien 

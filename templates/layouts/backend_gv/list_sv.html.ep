@@ -1,7 +1,24 @@
 % layout 'backend_gv/index';
+
+% my $prev_url = ($current_page == 1) ? '#' : '/?page='. ($current_page - 1);
+% my $next_url = ($current_page == $total_pages) ? '#' : '/?page='.( $current_page + 1);
+
+% my $prev_btn_class = _get_btn_class ( $current_page,  1 ) ;
+% my $next_btn_class = _get_btn_class ( $current_page, $total_pages ) ; 
+
+% sub _get_btn_class {
+%   my ($current_page, $page_number )= @_ ;
+%
+%   my $btn = ( $current_page == $page_number ) 
+%   ? 'block px-3 py-2 text-blue-700 hover:text-white hover:bg-indigo-500 border-r border-grey-light opacity-50 cursor-not-allowed'
+%   : 'block px-3 py-2 text-blue-700 hover:text-white hover:bg-indigo-500 border-r border-grey-light' ;
+% 
+%   return $btn;
+%}
+
 <div>
   <br>
-  <form action='/timkiem_sv' method = "post">
+  <form action='/search_sv' method = "post">
   <input type="text" class="form-search" name="full_name" placeholder="Tìm kiếm sinh viên...">
   <button type="submit" class="btn btn-primary me-2">Search</button>
   </form>
@@ -29,11 +46,32 @@
         <td><%= $item->{address} %></td>
         <td><%= $item->{email} %></td>
         <td><%= $item->{phone} %></td>
-        <td><a href='sua_sv/<%= $item->{id_student} %>'>Sửa</a>|<a onclick="myFunction()" href='xoa_sv/<%= $item->{id_student} %>'>Xóa</a></td>
+        <td><a href='edit_sv/<%= $item->{id_student} %>'>Sửa</a>|<a onclick="myFunction()" href='delete_sv/<%= $item->{id_student} %>'>Xóa</a></td>
       </tr>
     %}
     </tbody>      
   </table> 
+</div>
+<div class="flex p-4">
+    <ul class="flex mx-auto list-reset border border-grey-light rounded">
+        <li>
+            <%= link_to 'Previous', $prev_url => 
+                (class => 'block px-3 py-2 text-blue-700 hover:text-white hover:bg-indigo-500 border-r border-grey-light' ) 
+            %>
+        </li>
+    % for my $page (1 .. $total_pages) {
+        <li>
+            <%= link_to $page, '/?page='. $page => 
+                (class => 'block px-3 py-2 text-blue-700 hover:text-white hover:bg-indigo-500 border-r border-grey-light')
+            %>
+        </li>
+    %}
+        <li>
+            <%= link_to 'Next', $next_url => 
+                (class => 'block px-3 py-2 text-blue-700 hover:text-white hover:bg-indigo-500 border-r border-grey-light' ) 
+            %>
+        </li>
+    </ul>
 </div>
 <script>
 function myFunction() {
