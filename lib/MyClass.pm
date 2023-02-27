@@ -24,8 +24,6 @@ sub startup ($self) {
         return $self->{paginate};
     }
 
-
-
     # Load configuration from config file
     my $config = $self->plugin('NotYAMLConfig');
 
@@ -85,8 +83,34 @@ sub startup ($self) {
 
     #tim kiem sinh vien
     $r->post('/search_sv')->to('BackendGv#search_sv');
+
+    #quan ly banner
+    $r->get('/banner')->to('BannerController#banner');
+    $r->get('/edit_banner/:id_banner')->to('BannerController#edit_banner_view');
+    $r->post('/edit_banner/:id_banner')->to('BannerController#edit_banner');
+    $r->get('/delete_banner/:id_banner')->to('BannerController#delete_banner');
+
     }
     # Pagination 
-   
+    sub _db_handler {
+    my $self = shift;
+
+    $self->{dbh} = mojoForum::Model::DB->new();
+
+    return $self;
+    }
+
+    sub _set_pagination {
+        my $self = shift;
+        $self->{paginate} = 10;
+        return $self;
+    }
+
+    sub _get_pagination {
+        my $self = shift;
+
+        return $self->{paginate};
+    }
+
     
 1;

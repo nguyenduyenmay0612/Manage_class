@@ -34,6 +34,7 @@
             <li><a href="/phone_gv1">Giáo viên giảng dạy lớp</a></li>           
             </ul>
         </li><br> <hr>  
+        <li><a href="/banner" class="w3-bar-item w3-button">Quản lý banner</a></li> <br><hr> 
         <li><a href="/logout" class="w3-bar-item w3-button">Đăng xuất</a></li> <br><hr>  
         
       </ul>

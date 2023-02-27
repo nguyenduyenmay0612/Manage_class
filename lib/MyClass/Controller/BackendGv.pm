@@ -4,6 +4,9 @@ use open ':encoding(utf8)';
 binmode(STDOUT, ":utf8");
 use Mojo::Base 'Mojolicious::Controller', -signatures;
 use Data::Dumper;
+use Convert::Base64;
+use Mojo::Upload;
+use Cwd qw();
 
 #ly lich giang vien
 sub profile_gv($self){
@@ -14,7 +17,6 @@ sub profile_gv($self){
         my $teacher_info = +{
             full_name => $teacher->full_name,
             birthday => $teacher->birthday,
-            #address => $teacher->address,
             email => $teacher->email,
             phone => $teacher->phone,
         };
@@ -142,7 +144,7 @@ sub edit_view {
     my $student = $dbh->resultset('Student')->find($id_student);
     
     if ($student) {
-        $self->render(template => 'layouts/backend_gv/edit_sv', student => $student ,student => $student, message => '', error=>'');
+        $self->render(template => 'layouts/backend_gv/edit_sv', student => $student , message => '', error=>'');
     } else {
         $self->render(template => 'layouts/backend_gv/list_sv');
     }

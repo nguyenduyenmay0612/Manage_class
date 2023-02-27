@@ -56,7 +56,7 @@
     <ul class="flex mx-auto list-reset border border-grey-light rounded">
         <li>
             <%= link_to 'Previous', $prev_url => 
-                (class => 'block px-3 py-2 text-blue-700 hover:text-white hover:bg-indigo-500 border-r border-grey-light' ) 
+              (class => $prev_btn_class) 
             %>
         </li>
     % for my $page (1 .. $total_pages) {
@@ -68,7 +68,7 @@
     %}
         <li>
             <%= link_to 'Next', $next_url => 
-                (class => 'block px-3 py-2 text-blue-700 hover:text-white hover:bg-indigo-500 border-r border-grey-light' ) 
+              (class => $next_btn_class ) 
             %>
         </li>
     </ul>
