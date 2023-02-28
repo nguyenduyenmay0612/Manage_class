@@ -89,8 +89,22 @@ sub startup ($self) {
     $r->get('/edit_banner/:id_banner')->to('BannerController#edit_banner_view');
     $r->post('/edit_banner/:id_banner')->to('BannerController#edit_banner');
     $r->get('/delete_banner/:id_banner')->to('BannerController#delete_banner');
+    $r->post('/add_banner')->to('BannerController#add_banner');
 
+    #quan ly TKB sinh vien
+    $r->get('/edit_schedule')->to('ScheduleController#edit_schedule_view');
+    $r->post('/edit_schedule')->to('ScheduleController#edit_schedule');
+
+    #quan ly bai viet tren trang chủ 
+    $r->get('/post')->to('PostController#post');
+    $r->get('/edit_post/:id_post')->to('PostController#edit_post_view');
+    $r->post('/edit_post/:id_post')->to('PostController#edit_post');
+    $r->get('/delete_post/:id_post')->to('PostController#delete_post');
+    $r->get('/add_post')->to('PostController#add_post_view');
+    $r->post('/add_post')->to('PostController#add_post');
     }
+    
+
     # Pagination 
     sub _db_handler {
     my $self = shift;

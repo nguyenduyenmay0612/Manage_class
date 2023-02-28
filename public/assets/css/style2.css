@@ -26,4 +26,10 @@ footer {
     width : 300px;
     margin-left: -700px;
 }
-  
+#MyForm{
+	display: none;
+    width: 300px;
+    border: 1px solid #ccc;
+    padding: 14px;
+    background: #ececec;
+}	

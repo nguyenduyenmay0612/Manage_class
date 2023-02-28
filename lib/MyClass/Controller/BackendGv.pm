@@ -80,7 +80,7 @@ sub list_sv($self){
         birthday => $_->birthday,
         address => $_->address,
         email => $_->email,
-        phone => $_->phone,
+        phone => $_->phone
     } } @student;
 
     $self->render(template => 'layouts/backend_gv/list_sv', 

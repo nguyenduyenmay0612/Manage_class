@@ -17,7 +17,7 @@ sub banner{
        image=> $_->image
     } } @banner;
 
-    $self->render(template => 'layouts/backend_gv/banner', banner=>\@banner);    
+    $self->render(template => 'layouts/backend_gv/banner', banner=>\@banner, message=>'', error=>'');    
 }
 
 sub edit_banner_view{
@@ -70,6 +70,29 @@ sub delete_banner{
     $self->render(template => 'layouts/backend_gv/banner', banner =>\@banner);
     }
 }
+
+sub add_banner{
+    my $self = shift;
+    my $banner_name = $self->param('banner_name');
+    my $image = $self->param('image');
+
+    my $dbh = $self->app->{_dbh};
+    my $result = $dbh->resultset('Banner')->search({});
+    eval {
+        $dbh->resultset('Banner')->create({
+            banner_name => $banner_name,
+            image => $image
+        });
+    };
+    my @banner = $self->app->{_dbh}->resultset('Banner')->search({});  
+    @banner = map { { 
+        id_banner => $_->id_banner,
+        banner_name => $_->banner_name,
+        image => $_->image
+    } } @banner;
+    $self->render(template => 'layouts/backend_gv/banner', banner =>\@banner, message => 'Thêm thành công', error=>'');
+}     
+
 
 
 1;

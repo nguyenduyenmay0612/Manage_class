@@ -6,20 +6,10 @@ use Mojo::Base 'Mojolicious::Controller', -signatures;
 use Data::Dumper;
 use Mojo::Log;
 my $log = Mojo::Log->new(path => '/log/app.log', level => 'warn');
+
 #thoikhoabieu
-
-sub schedule_day($self){
-    $self->render(template => 'layouts/backend_sv/schedule_day');
-}
-
 sub schedule_week($self){
    my @schedule_sv = $self->app->{_dbh}->resultset('ScheduleSt')->search({});
-    #my @sinhvien = $self->app->{_dbh}->resultset('Student')->search({});
-
-    #my $db_object = $self->app->{_dbh};
-    
-    #my $sinhvien = $db_object->resultset('Student')->search({});
-
     @schedule_sv  = map { { 
        name_subject => $_->name_subject,
        teacher => $_->teacher,
@@ -27,7 +17,6 @@ sub schedule_week($self){
         date => $_->date,
         lession => $_->lession,
     } } @schedule_sv ;
-
     $self->render(template => 'layouts/backend_sv/schedule_week',schedule_sv =>\@schedule_sv);
 }
 
