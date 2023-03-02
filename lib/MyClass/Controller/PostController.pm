@@ -19,7 +19,7 @@ sub post {
        content=> $_->content
     } } @post;
 
-    $self->render(template => 'layouts/backend_gv/post', post=>\@post, message=>'', error=>'');    
+    $self->render(template => 'layouts/backend_gv/post/post', post=>\@post, message=>'', error=>'');    
 }
 
 sub edit_post_view {
@@ -28,9 +28,9 @@ sub edit_post_view {
     # my $dbh = $self->app->{_dbh};
     my $post = $self->app->{_dbh}->resultset('Post')->find($id_post);   
     if ($post) {
-        $self->render(template => 'layouts/backend_gv/edit_post', post => $post , message => '', error=>'');
+        $self->render(template => 'layouts/backend_gv/post/edit_post', post => $post , message => '', error=>'');
     } else {
-        $self->render(template => 'layouts/backend_gv/post');
+        $self->render(template => 'layouts/backend_gv/post/post');
     }
 }
 
@@ -54,7 +54,7 @@ sub edit_post {
             image => $image
             });
             my $post = $dbh->resultset('Post')->find($id_post);
-            $self->render(template => 'layouts/backend_gv/edit_post', post => $post, message => 'Cập nhật thành công', error=>'');   
+            $self->render(template => 'layouts/backend_gv/post/edit_post', post => $post, message => 'Cập nhật thành công', error=>'');   
         }
 }
 
@@ -72,15 +72,15 @@ sub delete_post {
         content => $_->content,
         image => $_->image
     } } @post;
-    $self->render(template => 'layouts/backend_gv/post', post =>\@post);
+    $self->render(template => 'layouts/backend_gv/post/post', post =>\@post);
     }else {
-    $self->render(template => 'layouts/backend_gv/post', post =>\@post);
+    $self->render(template => 'layouts/backend_gv/post/post', post =>\@post);
     }
 }
 
 sub add_post_view {
     my $self = shift;  
-    $self -> render(template => 'layouts/backend_gv/add_post', error =>'', message =>'');
+    $self -> render(template => 'layouts/backend_gv/post/add_post', error =>'', message =>'');
 }
 
 sub add_post {
@@ -108,7 +108,7 @@ sub add_post {
         content => $_->content,
         image => $_->image
     } } @post;
-    $self->render(template => 'layouts/backend_gv/add_post', post =>\@post, message => 'Thêm thành công', error=>'');
+    $self->render(template => 'layouts/backend_gv/post/add_post', post =>\@post, message => 'Thêm thành công', error=>'');
 }     
 
 

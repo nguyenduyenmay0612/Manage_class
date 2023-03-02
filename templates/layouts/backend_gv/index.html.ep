@@ -37,6 +37,7 @@
         <!-- <li><a href="/edit_schedule" class="w3-bar-item w3-button">Cập nhật TKB sinh viên</a></li> <br><hr>  -->
         <li><a href="/banner" class="w3-bar-item w3-button">Quản lý banner</a></li> <br><hr> 
         <li><a href="/post" class="w3-bar-item w3-button">Quản lý bài viết</a></li> <br><hr>
+        <li><a href="/activity" class="w3-bar-item w3-button">Quản lý hoạt động</a></li> <br><hr>
         <li><a href="/logout" class="w3-bar-item w3-button">Đăng xuất</a></li> <br><hr>  
         
       </ul>

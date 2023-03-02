@@ -1,28 +1,24 @@
 % layout 'backend_gv/index';
 <div class="page-header">
-        <h3 class="page-title"> Thêm sinh viên mới </h3>
+        <h3 class="page-title"> Thêm hoạt động mới </h3>
         <nav aria-label="breadcrumb"></nav>
     </div>
     <div class="row">
             <div >
                 <div class="card">
                   <div class="card-body">                                  
-                    <form method="post" action='/add_post' class="form-add-student">                       
+                    <form method="post" action='/add_activity' class="form-add-student">                       
                       <div class="form-group">
                         <label>Tên bài đăng</label>
-                        <input type="text" class="form-control" id="title_post" name="title_post" placeholder="Tên bài đăng" required>
+                        <input type="text" class="form-control" id="activity_name" name="activity_name" placeholder="Tên hoạt động" required>
                       </div>                                                                                                     
                       <div class="form-group">
                         <label>Ảnh</label>
                         <input type="file" class="form-control" id="image" name="image" placeholder="Ảnh" required>
                       </div>
                       <div class="form-group">
-                        <label>Tóm tắt</label>
-                        <input type="text" class="form-control" id="summary" name="summary" placeholder="Tóm tắt"  required>
-                      </div>
-                      <div class="form-group">
-                        <label>Nội dung</label>
-                        <input type="text" class="form-control" id="content" name="content" placeholder="Nội dung" required>
+                        <label>Mô tả</label>
+                        <input type="text" class="form-control" id="activity_des" name="activity_des" placeholder="Mô tả"  required>
                       </div>
                       
                       <button type="submit" class="btn btn-primary me-2">Thêm</button>

@@ -35,7 +35,7 @@ sub startup ($self) {
 
     # Normal route to controller
     $r->get('/')->to('Example#welcome');
-    $r->get('/sukien')->to('Example#sukien');
+    $r->get('/sukien/:id_post')->to('Example#sukien_detail');
     $r->get('/gioithieu')->to('Example#gioithieu');
     $r->get('/tuyensinh')->to('Example#tuyensinh');
 
@@ -102,7 +102,20 @@ sub startup ($self) {
     $r->get('/delete_post/:id_post')->to('PostController#delete_post');
     $r->get('/add_post')->to('PostController#add_post_view');
     $r->post('/add_post')->to('PostController#add_post');
+
+    #quan ly hoat dong
+    $r->get('/activity')->to('ActivityController#activity');
+    $r->get('/edit_activity/:id_activity')->to('ActivityController#edit_activity_view');
+    $r->post('/edit_activity/:id_activity')->to('ActivityController#edit_activity');
+    $r->get('/delete_activity/:id_activity')->to('ActivityController#delete_activity');
+    $r->get('/add_activity')->to('ActivityController#add_activity_view');
+    $r->post('/add_activity')->to('ActivityController#add_activity');
+
+
     }
+
+   
+
     
 
     # Pagination 

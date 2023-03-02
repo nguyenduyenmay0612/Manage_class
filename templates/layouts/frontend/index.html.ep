@@ -7,7 +7,7 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="../assets/css/style.css">
 </head>
 <body>
 
@@ -19,7 +19,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>                        
       </button>
-      <img src="assets\image\logo.png" alt="school" width = "50px" height = "50px"> 
+      <img src="..\assets\image\logo.png" alt="school" width = "50px" height = "50px"> 
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav">
@@ -49,7 +49,7 @@
     % foreach my $item (@{$banner}) {
     <div class="mySlides fade">
       <div class="numbertext"></div>
-      <img src="assets\image\<%= $item->{image} %>" style="width:100% ; height: 350px;">
+      <img src="..\assets\image\<%= $item->{image} %>" style="width:100% ; height: 350px;">
       <div class="text">Banner of VKU</div>
     </div>
     %}
@@ -71,18 +71,15 @@
       <div>
           <br> 
           <b><a href="/sukien">Thông báo triển khai kế hoạch A</a></b> <br>          
-          <img src="assets\image\sukien.jfif" alt="school"> <br>         
-          Trong khuôn khổ Dự án ODA 7,7 triệu USD do Cơ quan hợp tác quốc tế Hàn Quốc (KOICA) tài trợ, chiều ngày 19/12/2022,...        
+          <img src="..\assets\image\sukien.jfif" alt="school"> <br>         
       </div> <br>
       <div>
           <b><a href="/sukien">Thông báo triển khai kế hoạch B</a></b> <br>         
-          <img src="assets\image\sukien1.jfif" width=275px; height = 183px alt="school"> <br>     
-          Trong khuôn khổ Dự án ODA 7,7 triệu USD do Cơ quan hợp tác quốc tế Hàn Quốc (KOICA) tài trợ, chiều ngày 19/12/2022,...
+          <img src="..\assets\image\sukien1.jfif" width=275px; height = 183px alt="school"> <br>     
       </div>   <br> 
       <div> 
          <b><a href="/sukien">Thông báo triển khai kế hoạch C</a></b> <br>
-         <img src="assets\image\sukien3.jfif" width=275px; height = 183px alt="school"> <br>     
-          Trong khuôn khổ Dự án ODA 7,7 triệu USD do Cơ quan hợp tác quốc tế Hàn Quốc (KOICA) tài trợ, chiều ngày 19/12/2022,...
+         <img src="..\assets\image\sukien3.jfif" width=275px; height = 183px alt="school"> <br>     
       </div>
     </div>
     <div class="col-sm-6 text-left"> 
@@ -91,11 +88,11 @@
     <div class="col-sm-3 sidenav">
     <h3><b>Trải nghiệm những hoạt động thú vị</b></h3>
       <div class="well">
-      <a><img src="assets\image\hoatdong1.jfif"></a> <br>  
+      <a><img src="..\assets\image\hoatdong1.jfif"></a> <br>  
         <b>Cắm trại<b>
       </div>
       <div class="well">
-       <a><img src="assets\image\hoatdong2.jfif"></a> <br>  
+       <a><img src="..\assets\image\hoatdong2.jfif"></a> <br>  
         <b>Chống dịch<b>
       </div>
     </div>
@@ -123,7 +120,7 @@
     }
     slides[slideIndex-1].style.display = "block";  
     dots[slideIndex-1].className += " active";
-    setTimeout(showSlides, 2000); // Change image every 2 seconds
+    setTimeout(showSlides, 3000); // Change image every 2 seconds
   }
 </script>
 </body>

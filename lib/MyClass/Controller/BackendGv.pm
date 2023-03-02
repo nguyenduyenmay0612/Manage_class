@@ -83,7 +83,7 @@ sub list_sv($self){
         phone => $_->phone
     } } @student;
 
-    $self->render(template => 'layouts/backend_gv/list_sv', 
+    $self->render(template => 'layouts/backend_gv/student/list_sv', 
     student=>\@student,
     total_pages => $total_students / $paginate,
     current_page => $page
@@ -93,7 +93,7 @@ sub list_sv($self){
 #them sinh vien moi
 sub add_view {
     my $self = shift;  
-    $self -> render(template => 'layouts/backend_gv/add_sv', 
+    $self -> render(template => 'layouts/backend_gv/student/add_sv', 
             error    => $self->flash('error'),
             message  => $self->flash('message')
     );
@@ -129,10 +129,10 @@ sub add_sv {
                 password => $password
             });
         };
-       $self->render(template => 'layouts/backend_gv/add_sv', student => $student, message => 'Thêm thành công', error=>'');
+       $self->render(template => 'layouts/backend_gv/student/add_sv', student => $student, message => 'Thêm thành công', error=>'');
     } 
     else {
-        $self->render(template => 'layouts/backend_gv/add_sv', student => $student, message => '', error=>'Email này đã tồn tại');
+        $self->render(template => 'layouts/backend_gv/student/add_sv', student => $student, message => '', error=>'Email này đã tồn tại');
     }     
 }
 
@@ -144,9 +144,9 @@ sub edit_view {
     my $student = $dbh->resultset('Student')->find($id_student);
     
     if ($student) {
-        $self->render(template => 'layouts/backend_gv/edit_sv', student => $student , message => '', error=>'');
+        $self->render(template => 'layouts/backend_gv/student/edit_sv', student => $student , message => '', error=>'');
     } else {
-        $self->render(template => 'layouts/backend_gv/list_sv');
+        $self->render(template => 'layouts/backend_gv/student/list_sv');
     }
 
 }
@@ -163,7 +163,7 @@ sub edit_sv {
     my $student = $dbh->resultset('Student')->find($id_student);
     if ($student) {
         if ( ! $full_name || ! $birthday || ! $email || ! $address || ! $phone) {
-            $self->render(template => 'layouts/backend_gv/edit_sv', student => $student, error=>'Không được bỏ trống các trường trên', message =>'');
+            $self->render(template => 'layouts/backend_gv/student/edit_sv', student => $student, error=>'Không được bỏ trống các trường trên', message =>'');
         }    
         else {
             my $result= $dbh->resultset('Student')->find($id_student)->update({  
@@ -174,7 +174,7 @@ sub edit_sv {
             phone => $phone,
             });
             my $student1 = $dbh->resultset('Student')->find($id_student);
-            $self->render(template => 'layouts/backend_gv/edit_sv', student => $student1, message => 'Cập nhật thông tin thành công', error=>'');   
+            $self->render(template => 'layouts/backend_gv/student/edit_sv', student => $student1, message => 'Cập nhật thông tin thành công', error=>'');   
         }
     }
 }
@@ -195,9 +195,9 @@ sub delete_sv{
         email => $_->email,
         phone => $_->phone,
     } } @student;
-    $self->render(template => 'layouts/backend_gv/list_sv', student =>\@student);
+    $self->render(template => 'layouts/backend_gv/student/list_sv', student =>\@student);
     }else {
-    $self->render(template => 'layouts/backend_gv/list_sv', student =>\@student);
+    $self->render(template => 'layouts/backend_gv/student/list_sv', student =>\@student);
     }
 }
 
@@ -214,7 +214,7 @@ sub search_sv{
         phone => $_->phone,
     } } @student;
 
-    $self->render(template => 'layouts/backend_gv/list_sv', student=>\@student);
+    $self->render(template => 'layouts/backend_gv/student/list_sv', student=>\@student);
 }
 
 1;
