@@ -1,4 +1,4 @@
-% layout 'frontend/index1';
+% layout 'frontend/index';
 % title 'Welcome';
 <h2>GIỚI THIỆU </h2>
 <div class = "title-gioithieu">

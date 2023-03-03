@@ -36,6 +36,8 @@ sub startup ($self) {
     # Normal route to controller
     $r->get('/')->to('Example#welcome');
     $r->get('/sukien/:id_post')->to('Example#sukien_detail');
+    $r->get('/thongbao/:id_noti')->to('Example#thongbao_detail');
+    $r->get('/hoatdong/:id_activity')->to('Example#hoatdong_detail');
     $r->get('/gioithieu')->to('Example#gioithieu');
     $r->get('/tuyensinh')->to('Example#tuyensinh');
 
@@ -111,6 +113,13 @@ sub startup ($self) {
     $r->get('/add_activity')->to('ActivityController#add_activity_view');
     $r->post('/add_activity')->to('ActivityController#add_activity');
 
+    #quan ly thong bao
+    $r->get('/noti')->to('NotiController#noti');
+    $r->get('/edit_noti/:id_noti')->to('NotiController#edit_noti_view');
+    $r->post('/edit_noti/:id_noti')->to('NotiController#edit_noti');
+    $r->get('/delete_noti/:id_noti')->to('NotiController#delete_noti');
+    $r->get('/add_noti')->to('NotiController#add_noti_view');
+    $r->post('/add_noti')->to('NotiController#add_noti');
 
     }
 

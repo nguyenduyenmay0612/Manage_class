@@ -1,6 +1,6 @@
 % layout 'frontend/index';
 % title 'Welcome';
-<h2>TIN TỨC | SỰ KIỆN</h2>
+<h2><u>TIN TỨC | SỰ KIỆN</u></h2>
 % foreach my $item (@{$post}) {
 <div class= "row-content">
   <p><b><a href="/sukien/<%= $item->{id_post} %>" style="color:black"><%= $item->{title_post}%></a></b></p>

@@ -5,13 +5,8 @@
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="assets/css/style1.css">
-<style>
-
-</style>
 </head>
 <body>
-
-
 
 <form action="/loginto_sv" method="post">
   <div class="imgcontainer">
@@ -42,8 +37,6 @@
     %}
   </div>
 </form>
-
-
 </body>
   <script src="js/views/login.js"></script>
 </html>
