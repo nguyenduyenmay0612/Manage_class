@@ -1,6 +1,6 @@
 % layout 'frontend/index';
 % title 'Welcome';
-<h2>HOẠT ĐỘNG SINH VIÊN TRONG NHÀ TRƯỜNG</h2>
+<h2>HOẠT ĐỘNG TRONG TRƯỜNG</h2>
 <div class = "title-thongbao">
  <b> <%= $activity1->activity_name %><b>
 </div>

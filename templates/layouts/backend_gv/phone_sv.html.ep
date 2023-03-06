@@ -1,10 +1,10 @@
 % layout 'backend_gv/index';
 
-<div> 
+<div style =" overflow: auto ; max-height: 700px"> 
       <h3>
       Danh bạ sinh viên lớp bạn
       </h3>
-      <table class="w3-table w3-striped w3-bordered">
+      <table class="w3-table w3-striped w3-bordered" >
       <thead>
           <tr>
             <th>STT</th>

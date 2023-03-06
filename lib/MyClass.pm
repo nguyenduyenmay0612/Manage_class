@@ -40,6 +40,7 @@ sub startup ($self) {
     $r->get('/hoatdong/:id_activity')->to('Example#hoatdong_detail');
     $r->get('/gioithieu')->to('Example#gioithieu');
     $r->get('/tuyensinh')->to('Example#tuyensinh');
+    $r->get('/sukien')->to('Example#welcome');
 
     #login_logout
     $r->get('/login_sv')->to('Login#login_sv');
@@ -121,11 +122,14 @@ sub startup ($self) {
     $r->get('/add_noti')->to('NotiController#add_noti_view');
     $r->post('/add_noti')->to('NotiController#add_noti');
 
+    #quan ly hinh anh 
+    $r->get('/image')->to('ImageController#image');
+    $r->get('/edit_image/:id_image')->to('ImageController#edit_image_view');
+    $r->post('/edit_image/:id_image')->to('ImageController#edit_image');
+    $r->get('/delete_image/:id_image')->to('ImageController#delete_image');
+    $r->post('/add_image')->to('ImageController#add_image');
+
     }
-
-   
-
-    
 
     # Pagination 
     sub _db_handler {

@@ -51,9 +51,10 @@ sub phone_gv($self){
 sub profile_sv($self){
     my $id_student = $self->param('id_student');
     my $dbh = $self->app->{_dbh};
-    my $student = $dbh->resultset('Student')->search({"id_student" => 1})->first;
+    my $student = $dbh->resultset('Student')->search({"id_student" => 17})->first;
     if ($student) {
         my $student_info = +{
+            avatar => $student->avatar,
             full_name => $student->full_name,
             birthday => $student->birthday,
             address => $student->address,

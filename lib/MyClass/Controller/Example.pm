@@ -9,20 +9,22 @@ sub welcome ($self) {
     my @activity = $self->_get_activity();
     my @post = $self->_get_post();
     my @noti = $self->_get_noti();
+    my @image = $self->_get_image();
 
   # Render template "example/welcome.html.ep" with message
-    $self->render(msg => 'Chào mừng mọi người', banner=>\@banner, post=>\@post, activity=>\@activity, noti=>\@noti);
+    $self->render(msg => 'Chào mừng mọi người', banner=>\@banner, post=>\@post, activity=>\@activity, noti=>\@noti, image=>\@image);
 }
 
 sub sukien_detail($self){
     my @banner= $self->_get_banner();
     my @activity = $self->_get_activity();
     my @noti = $self->_get_noti();
-    # my @post = $self->_get_post();
+    my @image = $self->_get_image();
+
     my $id_post = $self->param('id_post');
     my $post = $self->app->{_dbh}->resultset('Post')->find($id_post);   
     if ($post) {
-        $self->render(template => 'layouts/frontend/sukien_detail', banner=>\@banner, post => $post, activity=>\@activity, noti=>\@noti);
+        $self->render(template => 'layouts/frontend/sukien_detail', banner=>\@banner, post => $post, activity=>\@activity, noti=>\@noti, image=>\@image);
         # $self->render(template => 'layouts/frontend/sukien_detail');
     }
 }
@@ -31,10 +33,12 @@ sub thongbao_detail($self){
     my @banner= $self->_get_banner();
     my @activity = $self->_get_activity();
     my @noti = $self->_get_noti();
+    my @image = $self->_get_image();
+
     my $id_noti = $self->param('id_noti');
     my $noti1 = $self->app->{_dbh}->resultset('Noti')->find($id_noti);   
     if ($noti1) {
-        $self->render(template => 'layouts/frontend/thongbao_detail', banner=>\@banner, activity=>\@activity, noti1=>$noti1, noti=>\@noti);
+        $self->render(template => 'layouts/frontend/thongbao_detail', banner=>\@banner, activity=>\@activity, noti1=>$noti1, noti=>\@noti, image=>\@image);
         # $self->render(template => 'layouts/frontend/thongbao_detail');
     }
 }
@@ -43,10 +47,12 @@ sub hoatdong_detail($self){
     my @banner= $self->_get_banner();
     my @activity = $self->_get_activity();
     my @noti = $self->_get_noti();
+    my @image = $self->_get_image();
+
     my $id_activity = $self->param('id_activity');
     my $activity1 = $self->app->{_dbh}->resultset('Activity')->find($id_activity);   
     if ($activity1) {
-        $self->render(template => 'layouts/frontend/hoatdong_detail', banner=>\@banner, activity1=>$activity1, activity=>\@activity, noti=>\@noti);
+        $self->render(template => 'layouts/frontend/hoatdong_detail', banner=>\@banner, activity1=>$activity1, activity=>\@activity, noti=>\@noti, image=>\@image);
         # $self->render(template => 'layouts/frontend/thongbao_detail');
     }
 }
@@ -56,6 +62,7 @@ sub gioithieu($self){
     my @activity = $self->_get_activity();
     my @post = $self->_get_post();
     my @noti = $self->_get_noti();
+    my @image = $self->_get_image();
 
     $self->render(template => 'layouts/frontend/gioithieu', banner=>\@banner, post=>\@post, activity=>\@activity, noti=>\@noti);
 }
@@ -117,6 +124,17 @@ sub _get_noti($self) {
     } } @noti;
 
     return @noti;
+}
+
+sub _get_image($self) {
+    my @image = $self->app->{_dbh}->resultset('Image')->search({});
+    @image = map { { 
+       id_image => $_->id_image,
+      image_name => $_->image_name,
+       image=> $_->image
+    } } @image;
+
+    return @image;
 }
 
 1;

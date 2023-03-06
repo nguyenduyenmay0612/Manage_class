@@ -27,7 +27,7 @@
     %}
     </tbody>      
   </table> <hr>
-    <form action='/add_activity' method = "post">
+    <form action='/add_activity' method = "get">
         <button type="submit" class="btn btn-primary me-2">Thêm hoạt động </button>
     </form>
     % if ($error) {

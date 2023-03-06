@@ -15,6 +15,7 @@ sub profile_gv($self){
     my $teacher = $dbh->resultset('Teacher')->search({"id_teacher" => 1})->first;
     if ($teacher) {
         my $teacher_info = +{
+            # avatar => $avatar->avatar,
             full_name => $teacher->full_name,
             birthday => $teacher->birthday,
             email => $teacher->email,
@@ -67,12 +68,12 @@ sub phone_gv($self){
 sub list_sv($self){
 
     my $dbh = $self->app->{dbh};                
-    my $paginate = $self->app->_get_pagination;    
-    my $page = ( !$self->param('page') ) ? 1 : $self->param('page');
-    my $total_students =$self->app->{_dbh}->resultset('Student')->search({})->count;
+    # my $paginate = $self->app->_get_pagination;    
+    # my $page = ( !$self->param('page') ) ? 1 : $self->param('page');
+    # my $total_students =$self->app->{_dbh}->resultset('Student')->search({})->count;
 
     my @student = $self->app->{_dbh}->resultset('Student')->search({},
-    { rows => $paginate, page => $page }
+    # { rows => $paginate, page => $page }
     );
     @student = map { { 
         id_student => $_->id_student,
@@ -85,8 +86,8 @@ sub list_sv($self){
 
     $self->render(template => 'layouts/backend_gv/student/list_sv', 
     student=>\@student,
-    total_pages => $total_students / $paginate,
-    current_page => $page
+    # total_pages => $total_students / $paginate,
+    # current_page => $page
     );
 }
 
@@ -108,6 +109,7 @@ sub add_sv {
     my $address = $self->param('address');
     my $phone= $self->param('phone');
     my $password= $self->param('password');
+    my $avatar= $self->param('avatar');
 
     if (! $full_name || ! $birthday || ! $email || ! $address || ! $password) {
         $self->flash(error => 'Tên sinh viên, ngày sinh, email, password và địa chỉ là các trường không thể thiếu');
@@ -126,7 +128,8 @@ sub add_sv {
                 address => $address,
                 phone => $phone,               
                 email => $email,
-                password => $password
+                password => $password,
+                avatar => $avatar
             });
         };
        $self->render(template => 'layouts/backend_gv/student/add_sv', student => $student, message => 'Thêm thành công', error=>'');
@@ -158,6 +161,7 @@ sub edit_sv {
     my $email = $self->param('email');
     my $address = $self->param('address');
     my $phone= $self->param('phone');
+    my $avatar= $self->param('avatar');
     my $dbh = $self->app->{_dbh}; 
 
     my $student = $dbh->resultset('Student')->find($id_student);
@@ -172,6 +176,7 @@ sub edit_sv {
             address => $address,
             email => $email,
             phone => $phone,
+            avatar => $avatar
             });
             my $student1 = $dbh->resultset('Student')->find($id_student);
             $self->render(template => 'layouts/backend_gv/student/edit_sv', student => $student1, message => 'Cập nhật thông tin thành công', error=>'');   
@@ -194,6 +199,7 @@ sub delete_sv{
         address => $_->address,
         email => $_->email,
         phone => $_->phone,
+        avatar => $_->avatar
     } } @student;
     $self->render(template => 'layouts/backend_gv/student/list_sv', student =>\@student);
     }else {
@@ -212,6 +218,7 @@ sub search_sv{
         address => $_->address,
         email => $_->email,
         phone => $_->phone,
+        avatar => $_->avatar
     } } @student;
 
     $self->render(template => 'layouts/backend_gv/student/list_sv', student=>\@student);

@@ -1,5 +1,5 @@
-<!DOCTYPE html>
-<html lang="vn">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="vn" xmlns="http://www.w3.org/1999/xhtml">
 <head>
   <title>School</title>
   <meta http-equiv="Content-type" content="text/html; charset=UTF-8"/>
@@ -9,7 +9,8 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-  <link rel="stylesheet" href="assets/css/style2.css">
+  <link rel="stylesheet" href="../assets/css/style2.css">
+  <script type="text/javascript" src="../ckeditor/ckeditor.js"></script>
 </head>
 <body>
  
@@ -40,7 +41,8 @@
               <li><a href="/banner">Banner</a></li>
               <li><a href="/post">Tin tức và sự kiện</a></li>   
               <li><a href="/activity">Hoạt động</a></li>
-              <li><a href="/noti">Thông báo</a></li>        
+              <li><a href="/noti">Thông báo</a></li>
+              <li><a href="/image">Hình ảnh</a></li>        
             </ul>
         </li><br> <hr>  
         <li><a href="/logout" class="w3-bar-item w3-button">Đăng xuất</a></li> <br><hr>  
