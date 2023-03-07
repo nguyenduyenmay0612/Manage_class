@@ -31,8 +31,8 @@
         <li>
             <a type="button" data-toggle="dropdown" class="w3-bar-item w3-button">Danh bạ điện thoại<span class="caret"></span></a>
             <ul class="dropdown-menu">
-            <li><a href="/phone_sv1">Sinh viên lớp</a></li>
-            <li><a href="/phone_gv1">Giáo viên giảng dạy lớp</a></li>           
+            <li><a href="/phone_student1">Sinh viên lớp</a></li>
+            <li><a href="/phone_teacher1">Giáo viên giảng dạy lớp</a></li>           
             </ul>
         </li><br> <hr>  
         <li>

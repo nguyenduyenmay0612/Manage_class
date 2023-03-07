@@ -1,4 +1,4 @@
-package MyClass::Controller::Login;
+package MyClass::Controller::LoginLogout;
 use strict;
 use warnings;
 use Mojo::Base 'Mojolicious::Controller', -signatures;
@@ -37,9 +37,9 @@ sub loginto_sv($self){
             @schedule_sv  = map { { 
             name_subject => $_->name_subject,
             teacher => $_->teacher,
-                room=> $_->room,
-                date => $_->date,
-                lession => $_->lession,
+            room=> $_->room,
+            date => $_->date,
+            lession => $_->lession,
             } } @schedule_sv ;
 
             $self->render(template => 'layouts/backend_sv/schedule_week',schedule_sv =>\@schedule_sv);

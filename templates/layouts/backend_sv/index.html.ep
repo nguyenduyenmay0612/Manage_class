@@ -34,8 +34,8 @@
         <li>
             <a type="button" data-toggle="dropdown">Danh bạ điện thoại<span class="caret"></span></a>
             <ul class="dropdown-menu">
-            <li><a href="/phone_sv">Sinh viên lớp</a></li>
-            <li><a href="/phone_gv">Giáo viên giảng dạy</a></li>           
+            <li><a href="/phone_student">Sinh viên lớp</a></li>
+            <li><a href="/phone_teacher">Giáo viên giảng dạy</a></li>           
             </ul>
         </li>
         <li><a href="/schedule_week">Thời khóa biểu</a></li>

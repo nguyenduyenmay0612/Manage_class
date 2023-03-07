@@ -1,4 +1,4 @@
-package MyClass::Controller::BackendSv;
+package MyClass::Controller::StudentController;
 use utf8;
 use open ':encoding(utf8)';
 binmode(STDOUT, ":utf8");
@@ -21,7 +21,7 @@ sub schedule_week($self){
 }
 
 #danhbadienthoai
-sub phone_sv($self){
+sub phone_student($self){
     my @student = $self->app->{_dbh}->resultset('Student')->search({});
     @student = map { { 
        id_student => $_->id_student,
@@ -31,10 +31,10 @@ sub phone_sv($self){
         phone => $_->phone,
     } } @student;
 
-    $self->render(template => 'layouts/backend_sv/phone_sv', student=>\@student);
+    $self->render(template => 'layouts/backend_sv/phone_student', student=>\@student);
 }
 
-sub phone_gv($self){
+sub phone_teacher($self){
     my @teacher = $self->app->{_dbh}->resultset('Teacher')->search({});
     @teacher = map { { 
        id_teacher => $_->id_teacher,
@@ -44,7 +44,7 @@ sub phone_gv($self){
         phone => $_->phone,
     } } @teacher;
 
-    $self->render(template => 'layouts/backend_sv/phone_gv', teacher=>\@teacher);
+    $self->render(template => 'layouts/backend_sv/phone_teacher', teacher=>\@teacher);
 }
 
 #lylichsinhvien

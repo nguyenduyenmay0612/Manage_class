@@ -43,49 +43,49 @@ sub startup ($self) {
     $r->get('/sukien')->to('Example#welcome');
 
     #login_logout
-    $r->get('/login_sv')->to('Login#login_sv');
-    $r->get('/login_gv')->to('Login#login_gv');
-    $r->post('/loginto_sv')->to('Login#loginto_sv');
-    $r->post('/loginto_gv')->to('Login#loginto_gv');
-    $r->get('/logout')->to('Login#logout');
+    $r->get('/login_sv')->to('LoginLogout#login_sv');
+    $r->get('/login_gv')->to('LoginLogout#login_gv');
+    $r->post('/loginto_sv')->to('LoginLogout#loginto_sv');
+    $r->post('/loginto_gv')->to('LoginLogout#loginto_gv');
+    $r->get('/logout')->to('LoginLogout#logout');
     
     
     #thoikhoabieu
-    $r->get('/schedule_day')->to('BackendSv#schedule_day');
-    $r->get('/schedule_week')->to('BackendSv#schedule_week');
+    $r->get('/schedule_day')->to('StudentController#schedule_day');
+    $r->get('/schedule_week')->to('StudentController#schedule_week');
 
 
     #phonedienthoai
-    $r->get('/phone_sv')->to('BackendSv#phone_sv');
-    $r->get('/phone_gv')->to('BackendSv#phone_gv');
-    $r->get('/phone_sv1')->to('BackendGv#phone_sv');
-    $r->get('/phone_gv1')->to('BackendGv#phone_gv');
+    $r->get('/phone_student')->to('StudentController#phone_student');
+    $r->get('/phone_teacher')->to('StudentController#phone_teacher');
+    $r->get('/phone_student1')->to('TeacherController#phone_student');
+    $r->get('/phone_teacher1')->to('TeacherController#phone_teacher1');
     
     #lylich
-    $r->get('/profile_sv')->to('BackendSv#profile_sv'); 
-    $r->get('/profile_gv')->to('BackendGv#profile_gv'); 
+    $r->get('/profile_sv')->to('StudentController#profile_sv'); 
+    $r->get('/profile_gv')->to('TeacherController#profile_gv'); 
     
     #ketquahoctap
-    $r->get('/diemhocphan')->to('BackendSv#diemhocphan');
-    $r->get('/ketqua_xhv')->to('BackendSv#ketqua_xhv');
-    $r->get('/chungchi')->to('BackendSv#chungchi');  
+    $r->get('/diemhocphan')->to('StudentController#diemhocphan');
+    $r->get('/ketqua_xhv')->to('StudentController#ketqua_xhv');
+    $r->get('/chungchi')->to('StudentController#chungchi');  
 
     #lichday
-    $r->get('/schedule_gv')->to('BackendGv#schedule_gv');
+    $r->get('/schedule_gv')->to('TeacherController#schedule_gv');
 
     #quan ly sinh viên
-    $r->get('/list_sv')->to('BackendGv#list_sv');
-    $r->get('/add_sv')->to('BackendGv#add_view');
-    $r->post('/add_sv')->to('BackendGv#add_sv');
-    $r->get('/edit_sv/:id')->to('BackendGv#edit_view');
-    $r->post('/edit_sv/:id')->to('BackendGv#edit_sv');
-    $r->get('/delete_sv/:id_student')->to('BackendGv#delete_sv');
+    $r->get('/list_sv')->to('TeacherController#list_sv');
+    $r->get('/add_sv')->to('TeacherController#add_view');
+    $r->post('/add_sv')->to('TeacherController#add_sv');
+    $r->get('/edit_sv/:id')->to('TeacherController#edit_view');
+    $r->post('/edit_sv/:id')->to('TeacherController#edit_sv');
+    $r->get('/delete_sv/:id_student')->to('TeacherController#delete_sv');
 
     #cap nhat thong tin giang vien
-    $r->get('/edit_gv')->to('BackendGv#edit_gv');
+    $r->get('/edit_gv')->to('TeacherController#edit_gv');
 
     #tim kiem sinh vien
-    $r->post('/search_sv')->to('BackendGv#search_sv');
+    $r->post('/search_sv')->to('TeacherController#search_sv');
 
     #quan ly banner
     $r->get('/banner')->to('BannerController#banner');

@@ -7,6 +7,7 @@ use Data::Dumper;
 use Convert::Base64;
 use Mojo::Upload;
 use Cwd qw();
+use HTML::Entities;
 
 sub post {
     my $self = shift;

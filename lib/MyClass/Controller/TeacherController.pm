@@ -1,4 +1,4 @@
-package MyClass::Controller::BackendGv;
+package MyClass::Controller::TeacherController;
 use utf8;
 use open ':encoding(utf8)';
 binmode(STDOUT, ":utf8");
@@ -39,7 +39,7 @@ sub schedule_gv($self){
 }
 
 #hien thi danh ba dien thoai sinh vien lop
-sub phone_sv($self){
+sub phone_student($self){
     my @student = $self->app->{_dbh}->resultset('Student')->search({});
     @student = map { { 
        id_student => $_->id_student,
@@ -48,11 +48,11 @@ sub phone_sv($self){
         phone => $_->phone,
     } } @student;
 
-    $self->render(template => 'layouts/backend_gv/phone_sv', student=>\@student);
+    $self->render(template => 'layouts/backend_gv/phone_student', student=>\@student);
 }
 
 #hien thi danh ba dien thoai giang vien lop
-sub phone_gv($self){
+sub phone_teacher($self){
     my @teacher = $self->app->{_dbh}->resultset('Teacher')->search({});
     @teacher = map { { 
        id_teacher => $_->id_teacher,
@@ -61,7 +61,7 @@ sub phone_gv($self){
         phone => $_->phone,
     } } @teacher;
 
-    $self->render(template => 'layouts/backend_gv/phone_gv', teacher=>\@teacher);
+    $self->render(template => 'layouts/backend_gv/phone_teacher', teacher=>\@teacher);
 }
 
 #hien thi danh sach thong tin sinh vien
